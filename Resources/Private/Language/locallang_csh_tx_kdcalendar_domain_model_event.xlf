@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-02T21:00:25Z" product-name="kd_calendar">
+		<header/>
+		<body>
+			<trans-unit id="kind.description">
+				<source>kind</source>
+			</trans-unit>
+			<trans-unit id="id.description">
+				<source>id</source>
+			</trans-unit>
+			<trans-unit id="status.description">
+				<source>status</source>
+			</trans-unit>
+			<trans-unit id="html_link.description">
+				<source>htmlLink</source>
+			</trans-unit>
+			<trans-unit id="summary.description">
+				<source>summary</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>location</source>
+			</trans-unit>
+			<trans-unit id="color_id.description">
+				<source>colorId</source>
+			</trans-unit>
+			<trans-unit id="end_time_unspecified.description">
+				<source>Whether the endTime is unspecified</source>
+			</trans-unit>
+			<trans-unit id="recurrence.description">
+				<source>The recurrence</source>
+			</trans-unit>
+			<trans-unit id="recurring_event_id.description">
+				<source>The id of the recurring event</source>
+			</trans-unit>
+			<trans-unit id="transparency.description">
+				<source>The transparency</source>
+			</trans-unit>
+			<trans-unit id="visibility.description">
+				<source>The visibility</source>
+			</trans-unit>
+			<trans-unit id="i_cal_u_i_d.description">
+				<source>The ical uid</source>
+			</trans-unit>
+			<trans-unit id="sequence.description">
+				<source>The sequence</source>
+			</trans-unit>
+			<trans-unit id="attendees_omitted.description">
+				<source>Whether attendees may have been omitted from the event's representation. When retrieving an event, this may be due to a restriction specified by the maxAttendee query parameter. When updating an event, this can be used to only update the participant's response</source>
+			</trans-unit>
+			<trans-unit id="extended_properties.description">
+				<source>extendedProperties</source>
+			</trans-unit>
+			<trans-unit id="hangout_link.description">
+				<source>The hangout link</source>
+			</trans-unit>
+			<trans-unit id="anyone_can_add_self.description">
+				<source>anyoneCanAddSelf</source>
+			</trans-unit>
+			<trans-unit id="guests_can_invite_others.description">
+				<source>guestsCanInviteOthers</source>
+			</trans-unit>
+			<trans-unit id="guests_can_modify.description">
+				<source>guestsCanModify</source>
+			</trans-unit>
+			<trans-unit id="guests_can_see_other_guests.description">
+				<source>guestsCanSeeOtherGuests</source>
+			</trans-unit>
+			<trans-unit id="private_copy.description">
+				<source>privateCopy</source>
+			</trans-unit>
+			<trans-unit id="locked.description">
+				<source>locked</source>
+			</trans-unit>
+			<trans-unit id="use_default_reminder.description">
+				<source>Whether the default reminders of the calendar apply to the event.</source>
+			</trans-unit>
+			<trans-unit id="source_url.description">
+				<source>The sourceUrl</source>
+			</trans-unit>
+			<trans-unit id="source_title.description">
+				<source>The source title</source>
+			</trans-unit>
+			<trans-unit id="creator.description">
+				<source>The creator of the event</source>
+			</trans-unit>
+			<trans-unit id="organizer.description">
+				<source>The organizer of the event</source>
+			</trans-unit>
+			<trans-unit id="start.description">
+				<source>The start date</source>
+			</trans-unit>
+			<trans-unit id="end.description">
+				<source>The end time</source>
+			</trans-unit>
+			<trans-unit id="original_start_time.description">
+				<source>The original start time</source>
+			</trans-unit>
+			<trans-unit id="attendees.description">
+				<source>Attendees of this event</source>
+			</trans-unit>
+			<trans-unit id="gadget.description">
+				<source>The gadget</source>
+			</trans-unit>
+			<trans-unit id="reminders.description">
+				<source>The reminders</source>
+			</trans-unit>
+			<trans-unit id="attachments.description">
+				<source>attachments</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

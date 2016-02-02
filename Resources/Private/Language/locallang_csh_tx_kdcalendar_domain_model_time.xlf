@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-02T21:00:25Z" product-name="kd_calendar">
+		<header/>
+		<body>
+			<trans-unit id="date.description">
+				<source>The date</source>
+			</trans-unit>
+			<trans-unit id="date_time.description">
+				<source>The datetime</source>
+			</trans-unit>
+			<trans-unit id="time_zone.description">
+				<source>The timezone</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

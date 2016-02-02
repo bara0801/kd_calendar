@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-02T21:00:25Z" product-name="kd_calendar">
+		<header/>
+		<body>
+			<trans-unit id="id.description">
+				<source>The id of the attendee</source>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>The email of the eattendee</source>
+			</trans-unit>
+			<trans-unit id="organizer.description">
+				<source>Whether the attendee is an organizer</source>
+			</trans-unit>
+			<trans-unit id="self.description">
+				<source>Whether the attendee corresponds to the calendar on which this copy of the event appears</source>
+			</trans-unit>
+			<trans-unit id="resource.description">
+				<source>Whether the attendee is a resource</source>
+			</trans-unit>
+			<trans-unit id="response_status.description">
+				<source>The attendee's response status</source>
+			</trans-unit>
+			<trans-unit id="optional.description">
+				<source>Whether this is an optional attendee</source>
+			</trans-unit>
+			<trans-unit id="additional_guests.description">
+				<source>Number of additional guests</source>
+			</trans-unit>
+			<trans-unit id="comment.description">
+				<source>The attendee's response comment</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,42 @@
+
+config.tx_extbase{
+    persistence{
+        classes{
+
+            TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+                subclasses {
+                    Tx_KdCalendar_Creator = KevinDitscheid\KdCalendar\Domain\Model\Creator
+					Tx_KdCalendar_Organizer = KevinDitscheid\KdCalendar\Domain\Model\Organizer
+					
+          		}
+            }
+            TYPO3\CMS\Extbase\Domain\Model\File {
+                subclasses {
+                    Tx_KdCalendar_Attachment = KevinDitscheid\KdCalendar\Domain\Model\Attachment
+					
+          		}
+            }
+            KevinDitscheid\KdCalendar\Domain\Model\Creator {
+                mapping {
+                    tableName = fe_users
+                    recordType = Tx_KdCalendar_Creator
+                }
+            }
+            
+            KevinDitscheid\KdCalendar\Domain\Model\Organizer {
+                mapping {
+                    tableName = fe_users
+                    recordType = Tx_KdCalendar_Organizer
+                }
+            }
+            
+            KevinDitscheid\KdCalendar\Domain\Model\Attachment {
+                mapping {
+                    tableName = sys_file
+                    recordType = Tx_KdCalendar_Attachment
+                }
+            }
+            
+    	}
+    }
+}

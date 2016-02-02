@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-02T21:00:25Z" product-name="kd_calendar">
+		<header/>
+		<body>
+			<trans-unit id="type.description">
+				<source>The type</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>The title</source>
+			</trans-unit>
+			<trans-unit id="display.description">
+				<source>The gadget's display mode. Optional. Possible values are:
+
+    &quot;icon&quot; - The gadget displays next to the event's title in the calendar view.
+    &quot;chip&quot; - The gadget displays when the event is clicked.
+</source>
+			</trans-unit>
+			<trans-unit id="width.description">
+				<source>The gadget's width in pixels. The width must be an integer greater than 0</source>
+			</trans-unit>
+			<trans-unit id="height.description">
+				<source>The gadget's height in pixels. The height must be an integer greater than 0</source>
+			</trans-unit>
+			<trans-unit id="icon_link.description">
+				<source>The gadget's icon URL. The URL scheme must be HTTPS.</source>
+			</trans-unit>
+			<trans-unit id="link.description">
+				<source>The gadget's URL. The URL scheme must be HTTPS.</source>
+			</trans-unit>
+			<trans-unit id="preferences.description">
+				<source>Preferences</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
