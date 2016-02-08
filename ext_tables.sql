@@ -118,34 +118,6 @@ CREATE TABLE tx_kdcalendar_domain_model_event (
 );
 
 #
-# Table structure for table 'fe_users'
-#
-CREATE TABLE fe_users (
-
-	id varchar(255) DEFAULT '' NOT NULL,
-	email varchar(255) DEFAULT '' NOT NULL,
-	display_name varchar(255) DEFAULT '' NOT NULL,
-	self tinyint(1) unsigned DEFAULT '0' NOT NULL,
-
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
-
-);
-
-#
-# Table structure for table 'fe_users'
-#
-CREATE TABLE fe_users (
-
-	id varchar(255) DEFAULT '' NOT NULL,
-	email varchar(255) DEFAULT '' NOT NULL,
-	display_name varchar(255) DEFAULT '' NOT NULL,
-	self tinyint(1) unsigned DEFAULT '0' NOT NULL,
-
-	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
-
-);
-
-#
 # Table structure for table 'tx_kdcalendar_domain_model_time'
 #
 CREATE TABLE tx_kdcalendar_domain_model_time (
@@ -335,20 +307,16 @@ CREATE TABLE sys_file (
 );
 
 #
-# Table structure for table 'tx_kdcalendar_domain_model_event'
+# Table structure for table 'fe_users'
 #
-CREATE TABLE tx_kdcalendar_domain_model_event (
+CREATE TABLE fe_users (
 
-	calendar  int(11) unsigned DEFAULT '0' NOT NULL,
+	id varchar(255) DEFAULT '' NOT NULL,
+	email varchar(255) DEFAULT '' NOT NULL,
+	display_name varchar(255) DEFAULT '' NOT NULL,
+	self tinyint(1) unsigned DEFAULT '0' NOT NULL,
 
-);
-
-#
-# Table structure for table 'tx_kdcalendar_domain_model_reminder'
-#
-CREATE TABLE tx_kdcalendar_domain_model_reminder (
-
-	event  int(11) unsigned DEFAULT '0' NOT NULL,
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
 );
 

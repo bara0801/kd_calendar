@@ -1,0 +1,23 @@
+{
+	"name": "kd/kd_calendar",
+	"description": "A basic calendar extension for TYPO3",
+	"keywords": ["typo3", "cms", "calendar", "google", "extension", "extbase"],
+	"homepage": "https://kevinditscheid.de/",
+	"type": "typo3",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Kevin Ditscheid <ditscheid@engine-productions.de>",
+			"role": "Developer",
+			"homepage": "http://kevinditscheid.de"
+		}
+	],
+	"config": {
+		"bin-dir": "Resources/Private/Scripts/bin",
+		"vendor-dir": "Resources/Private/Scripts/vendor"
+	},
+	"require": {
+		"php": ">=5.5.0",
+		"google/apiclient": "1.*"
+	}
+}

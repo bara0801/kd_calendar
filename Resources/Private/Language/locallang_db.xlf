@@ -3,6 +3,7 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-08T14:02:44Z" product-name="kd_calendar">
 		<header/>
 		<body>
+			<!-- Calendar Model -->
 			<trans-unit id="tx_kdcalendar_domain_model_calendar">
 				<source>Calendar</source>
 			</trans-unit>
@@ -24,6 +25,8 @@
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.events">
 				<source>Events</source>
 			</trans-unit>
+			
+			<!-- Event Model -->
 			<trans-unit id="tx_kdcalendar_domain_model_event">
 				<source>Event</source>
 			</trans-unit>
@@ -32,6 +35,15 @@
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.status">
 				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.status.confirmed">
+				<source>Confirmed</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.status.tentative">
+				<source>Tentatively confirmed</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.status.cancelled">
+				<source>Cencelled</source>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.html_link">
 				<source>Html Link</source>
@@ -60,8 +72,26 @@
 			<trans-unit id="tx_kdcalendar_domain_model_event.transparency">
 				<source>Transparency</source>
 			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.transparency.opaque">
+				<source>Opaque</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.transparency.transparent">
+				<source>Transparent</source>
+			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.visibility">
 				<source>Visibility</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.visibility.default">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.visibility.public">
+				<source>Public</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.visibility.private">
+				<source>Private</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_event.visibility.confidential">
+				<source>Confidental</source>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.i_cal_u_i_d">
 				<source>I Cal U I D</source>
