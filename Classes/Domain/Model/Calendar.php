@@ -1,7 +1,6 @@
 <?php
 namespace KevinDitscheid\KdCalendar\Domain\Model;
 
-
 /***************************************************************
  *
  *  Copyright notice
@@ -34,42 +33,38 @@ class Calendar extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * kind
+     * Identifier of the calendar
      *
      * @var string
-     */
-    protected $kind = '';
-    
-    /**
-     * id
-     *
-     * @var string
+     * @validate NotEmpty
      */
     protected $id = '';
     
     /**
-     * summary
+     * Title of the calendar
      *
      * @var string
+     * @validate NotEmpty
      */
     protected $summary = '';
     
     /**
-     * description
+     * Description of the calendar
      *
      * @var string
      */
     protected $description = '';
     
     /**
-     * location
+     * Geographic location of the calendar as free-form text
      *
      * @var string
      */
     protected $location = '';
     
     /**
-     * timeZone
+     * The time zone of the calendar. (Formatted as an IANA Time Zone Database name,
+     * e.g. "Europe/Zurich".)
      *
      * @var string
      */
@@ -80,6 +75,7 @@ class Calendar extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\KevinDitscheid\KdCalendar\Domain\Model\Event>
      * @cascade remove
+     * @lazy
      */
     protected $events = null;
     
@@ -103,27 +99,6 @@ class Calendar extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected function initStorageObjects()
     {
         $this->events = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-    }
-    
-    /**
-     * Returns the kind
-     *
-     * @return string $kind
-     */
-    public function getKind()
-    {
-        return $this->kind;
-    }
-    
-    /**
-     * Sets the kind
-     *
-     * @param string $kind
-     * @return void
-     */
-    public function setKind($kind)
-    {
-        $this->kind = $kind;
     }
     
     /**

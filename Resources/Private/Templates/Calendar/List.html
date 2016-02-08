@@ -19,7 +19,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <table  class="tx_kdcalendar" >
 	<tr>
-		<th><f:translate key="tx_kdcalendar_domain_model_calendar.kind" /></th>
 		<th><f:translate key="tx_kdcalendar_domain_model_calendar.id" /></th>
 		<th><f:translate key="tx_kdcalendar_domain_model_calendar.summary" /></th>
 		<th><f:translate key="tx_kdcalendar_domain_model_calendar.description" /></th>
@@ -31,7 +30,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 	<f:for each="{calendars}" as="calendar">
 		<tr>
-			<td><f:link.action action="show" arguments="{calendar : calendar}"> {calendar.kind}</f:link.action></td>
 			<td><f:link.action action="show" arguments="{calendar : calendar}"> {calendar.id}</f:link.action></td>
 			<td><f:link.action action="show" arguments="{calendar : calendar}"> {calendar.summary}</f:link.action></td>
 			<td><f:link.action action="show" arguments="{calendar : calendar}"> {calendar.description}</f:link.action></td>

@@ -1,7 +1,6 @@
 <?php
 namespace KevinDitscheid\KdCalendar\Controller;
 
-
 /***************************************************************
  *
  *  Copyright notice

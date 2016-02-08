@@ -3,8 +3,8 @@
         {
             "config": {
                 "position": [
-                    112,
-                    63
+                    30,
+                    88
                 ]
             },
             "name": "New Model Object",
@@ -38,19 +38,9 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Identifier of the calendar",
                             "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "kind",
-                            "propertyType": "String",
-                            "uid": "1404452385269"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
+                            "propertyIsRequired": true,
                             "propertyName": "id",
                             "propertyType": "String",
                             "uid": "431985497715"
@@ -58,9 +48,9 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Title of the calendar",
                             "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
+                            "propertyIsRequired": true,
                             "propertyName": "summary",
                             "propertyType": "String",
                             "uid": "932964476742"
@@ -68,7 +58,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Description of the calendar",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "description",
@@ -78,7 +68,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Geographic location of the calendar as free-form text",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "location",
@@ -88,7 +78,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "The time zone of the calendar. (Formatted as an IANA Time Zone Database name, e.g. \"Europe\/Zurich\".)",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "timeZone",
@@ -101,7 +91,7 @@
                     "relations": [
                         {
                             "foreignRelationClass": "",
-                            "lazyLoading": false,
+                            "lazyLoading": true,
                             "propertyIsExcludeField": true,
                             "relationDescription": "The events for this calendar",
                             "relationName": "events",
@@ -116,8 +106,8 @@
         {
             "config": {
                 "position": [
-                    400,
-                    49
+                    419,
+                    53
                 ]
             },
             "name": "New Model Object",
@@ -151,17 +141,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "kind",
-                            "propertyType": "String",
-                            "uid": "571147685197"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Opaque identifier of the event",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "id",
@@ -171,7 +151,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Status of the event. Optional. Possible values are:\n\n    \"confirmed\" - The event is confirmed. This is the default status.\n    \"tentative\" - The event is tentatively confirmed.\n    \"cancelled\" - The event is cancelled.",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "status",
@@ -181,7 +161,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "An absolute link to this event in the Google Calendar Web UI",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "htmlLink",
@@ -191,7 +171,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Title of the event",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "summary",
@@ -201,7 +181,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Description of the event",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "description",
@@ -211,7 +191,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Geographic location of the event as free-form text",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "location",
@@ -221,7 +201,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "The color of the event. This is an ID referring to an entry in the event section of the colors definition",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "colorId",
@@ -241,7 +221,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The recurrence",
+                            "propertyDescription": "List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "recurrence",
@@ -251,7 +231,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The id of the recurring event",
+                            "propertyDescription": "For an instance of a recurring event, this is the id of the recurring event to which this instance belongs",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "recurringEventId",
@@ -261,7 +241,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The transparency",
+                            "propertyDescription": "Whether the event blocks time on the calendar. Optional. Possible values are:\n\n    \"opaque\" - The event blocks time on the calendar. This is the default value.\n    \"transparent\" - The event does not block time on the calendar",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "transparency",
@@ -271,7 +251,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The visibility",
+                            "propertyDescription": "Visibility of the event. Optional. Possible values are:\n\n    \"default\" - Uses the default visibility for events on the calendar. This is the default value.\n    \"public\" - The event is public and event details are visible to all readers of the calendar.\n    \"private\" - The event is private and only event attendees may view event details.\n    \"confidential\" - The event is private. This value is provided for compatibility reasons",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "visibility",
@@ -281,7 +261,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The ical uid",
+                            "propertyDescription": "Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring systems and must be supplied when importing events via the import method",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "iCalUID",
@@ -291,7 +271,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The sequence",
+                            "propertyDescription": "Sequence number as per iCalendar",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "sequence",
@@ -311,7 +291,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Extended properties of the event",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "extendedProperties",
@@ -321,7 +301,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The hangout link",
+                            "propertyDescription": "An absolute link to the Google+ hangout associated with this event",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "hangoutLink",
@@ -331,7 +311,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Whether anyone can invite themselves to the event. Optional. The default is False",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "anyoneCanAddSelf",
@@ -341,7 +321,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Whether attendees other than the organizer can invite others to the event. Optional. The default is True",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "guestsCanInviteOthers",
@@ -351,7 +331,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Whether attendees other than the organizer can modify the event. Optional. The default is False",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "guestsCanModify",
@@ -361,7 +341,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "guestsCanSeeOtherGuests",
@@ -371,7 +351,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Whether this is a private event copy where changes are not shared with other copies on other calendars. Optional. Immutable. The default is False",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "privateCopy",
@@ -381,7 +361,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "",
+                            "propertyDescription": "Whether this is a locked event copy where no changes can be made to the main event fields \"summary\", \"description\", \"location\", \"start\", \"end\" or \"recurrence\". The default is False",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "locked",
@@ -401,7 +381,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The sourceUrl",
+                            "propertyDescription": "URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS.",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "sourceUrl",
@@ -411,7 +391,7 @@
                         {
                             "allowedFileTypes": "",
                             "maxItems": "1",
-                            "propertyDescription": "The source title",
+                            "propertyDescription": "Title of the source; for example a title of a web page or an email subject.",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "sourceTitle",
@@ -895,8 +875,8 @@
         {
             "config": {
                 "position": [
-                    159,
-                    268
+                    78,
+                    434
                 ]
             },
             "name": "New Model Object",
@@ -1194,8 +1174,8 @@
         },
         "extensionKey": "kd_calendar",
         "name": "Calendar",
-        "originalExtensionKey": "",
-        "originalVendorName": "",
+        "originalExtensionKey": "kd_calendar",
+        "originalVendorName": "KevinDitscheid",
         "persons": [
             {
                 "company": "",
@@ -1349,7 +1329,7 @@
         }
     ],
     "log": {
-        "last_modified": "2016-02-02 09:00",
+        "last_modified": "2016-02-08 02:02",
         "extension_builder_version": "7.6.0",
         "be_user": " (1)"
     }

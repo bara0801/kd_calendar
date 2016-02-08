@@ -2,7 +2,7 @@
 return array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event',
-		'label' => 'kind',
+		'label' => 'id',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -19,14 +19,14 @@ return array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'kind,id,status,html_link,summary,description,location,color_id,end_time_unspecified,recurrence,recurring_event_id,transparency,visibility,i_cal_u_i_d,sequence,attendees_omitted,extended_properties,hangout_link,anyone_can_add_self,guests_can_invite_others,guests_can_modify,guests_can_see_other_guests,private_copy,locked,use_default_reminder,source_url,source_title,creator,organizer,start,end,original_start_time,attendees,gadget,reminders,attachments,',
+		'searchFields' => 'id,status,html_link,summary,description,location,color_id,end_time_unspecified,recurrence,recurring_event_id,transparency,visibility,i_cal_u_i_d,sequence,attendees_omitted,extended_properties,hangout_link,anyone_can_add_self,guests_can_invite_others,guests_can_modify,guests_can_see_other_guests,private_copy,locked,use_default_reminder,source_url,source_title,creator,organizer,start,end,original_start_time,attendees,gadget,reminders,attachments,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('kd_calendar') . 'Resources/Public/Icons/tx_kdcalendar_domain_model_event.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, kind, id, status, html_link, summary, description, location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, id, status, html_link, summary, description, location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, kind, id, status, html_link, summary, description;;;richtext:rte_transform[mode=ts_links], location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, id, status, html_link, summary, description;;;richtext:rte_transform[mode=ts_links], location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -116,15 +116,6 @@ return array(
 			),
 		),
 
-		'kind' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.kind',
-			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
-			),
-		),
 		'id' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.id',

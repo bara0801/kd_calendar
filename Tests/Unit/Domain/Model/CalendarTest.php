@@ -54,31 +54,6 @@ class CalendarTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 	/**
 	 * @test
 	 */
-	public function getKindReturnsInitialValueForString()
-	{
-		$this->assertSame(
-			'',
-			$this->subject->getKind()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function setKindForStringSetsKind()
-	{
-		$this->subject->setKind('Conceived at T3CON10');
-
-		$this->assertAttributeEquals(
-			'Conceived at T3CON10',
-			'kind',
-			$this->subject
-		);
-	}
-
-	/**
-	 * @test
-	 */
 	public function getIdReturnsInitialValueForString()
 	{
 		$this->assertSame(

@@ -1,88 +1,97 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-02T21:00:25Z" product-name="kd_calendar">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-08T14:02:44Z" product-name="kd_calendar">
 		<header/>
 		<body>
-			<trans-unit id="kind.description">
-				<source>kind</source>
-			</trans-unit>
 			<trans-unit id="id.description">
-				<source>id</source>
+				<source>Opaque identifier of the event</source>
 			</trans-unit>
 			<trans-unit id="status.description">
-				<source>status</source>
+				<source>Status of the event. Optional. Possible values are:
+
+    &quot;confirmed&quot; - The event is confirmed. This is the default status.
+    &quot;tentative&quot; - The event is tentatively confirmed.
+    &quot;cancelled&quot; - The event is cancelled.</source>
 			</trans-unit>
 			<trans-unit id="html_link.description">
-				<source>htmlLink</source>
+				<source>An absolute link to this event in the Google Calendar Web UI</source>
 			</trans-unit>
 			<trans-unit id="summary.description">
-				<source>summary</source>
+				<source>Title of the event</source>
 			</trans-unit>
 			<trans-unit id="description.description">
-				<source>description</source>
+				<source>Description of the event</source>
 			</trans-unit>
 			<trans-unit id="location.description">
-				<source>location</source>
+				<source>Geographic location of the event as free-form text</source>
 			</trans-unit>
 			<trans-unit id="color_id.description">
-				<source>colorId</source>
+				<source>The color of the event. This is an ID referring to an entry in the event section of the colors definition</source>
 			</trans-unit>
 			<trans-unit id="end_time_unspecified.description">
 				<source>Whether the endTime is unspecified</source>
 			</trans-unit>
 			<trans-unit id="recurrence.description">
-				<source>The recurrence</source>
+				<source>List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events</source>
 			</trans-unit>
 			<trans-unit id="recurring_event_id.description">
-				<source>The id of the recurring event</source>
+				<source>For an instance of a recurring event, this is the id of the recurring event to which this instance belongs</source>
 			</trans-unit>
 			<trans-unit id="transparency.description">
-				<source>The transparency</source>
+				<source>Whether the event blocks time on the calendar. Optional. Possible values are:
+
+    &quot;opaque&quot; - The event blocks time on the calendar. This is the default value.
+    &quot;transparent&quot; - The event does not block time on the calendar</source>
 			</trans-unit>
 			<trans-unit id="visibility.description">
-				<source>The visibility</source>
+				<source>Visibility of the event. Optional. Possible values are:
+
+    &quot;default&quot; - Uses the default visibility for events on the calendar. This is the default value.
+    &quot;public&quot; - The event is public and event details are visible to all readers of the calendar.
+    &quot;private&quot; - The event is private and only event attendees may view event details.
+    &quot;confidential&quot; - The event is private. This value is provided for compatibility reasons</source>
 			</trans-unit>
 			<trans-unit id="i_cal_u_i_d.description">
-				<source>The ical uid</source>
+				<source>Event unique identifier as defined in RFC5545. It is used to uniquely identify events accross calendaring systems and must be supplied when importing events via the import method</source>
 			</trans-unit>
 			<trans-unit id="sequence.description">
-				<source>The sequence</source>
+				<source>Sequence number as per iCalendar</source>
 			</trans-unit>
 			<trans-unit id="attendees_omitted.description">
 				<source>Whether attendees may have been omitted from the event's representation. When retrieving an event, this may be due to a restriction specified by the maxAttendee query parameter. When updating an event, this can be used to only update the participant's response</source>
 			</trans-unit>
 			<trans-unit id="extended_properties.description">
-				<source>extendedProperties</source>
+				<source>Extended properties of the event</source>
 			</trans-unit>
 			<trans-unit id="hangout_link.description">
-				<source>The hangout link</source>
+				<source>An absolute link to the Google+ hangout associated with this event</source>
 			</trans-unit>
 			<trans-unit id="anyone_can_add_self.description">
-				<source>anyoneCanAddSelf</source>
+				<source>Whether anyone can invite themselves to the event. Optional. The default is False</source>
 			</trans-unit>
 			<trans-unit id="guests_can_invite_others.description">
-				<source>guestsCanInviteOthers</source>
+				<source>Whether attendees other than the organizer can invite others to the event. Optional. The default is True</source>
 			</trans-unit>
 			<trans-unit id="guests_can_modify.description">
-				<source>guestsCanModify</source>
+				<source>Whether attendees other than the organizer can modify the event. Optional. The default is False</source>
 			</trans-unit>
 			<trans-unit id="guests_can_see_other_guests.description">
-				<source>guestsCanSeeOtherGuests</source>
+				<source>Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True</source>
 			</trans-unit>
 			<trans-unit id="private_copy.description">
-				<source>privateCopy</source>
+				<source>Whether this is a private event copy where changes are not shared with other copies on other calendars. Optional. Immutable. The default is False</source>
 			</trans-unit>
 			<trans-unit id="locked.description">
-				<source>locked</source>
+				<source>Whether this is a locked event copy where no changes can be made to the main event fields &quot;summary&quot;, &quot;description&quot;, &quot;location&quot;, &quot;start&quot;, &quot;end&quot; or &quot;recurrence&quot;. The default is False</source>
 			</trans-unit>
 			<trans-unit id="use_default_reminder.description">
 				<source>Whether the default reminders of the calendar apply to the event.</source>
 			</trans-unit>
 			<trans-unit id="source_url.description">
-				<source>The sourceUrl</source>
+				<source>URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS.</source>
 			</trans-unit>
 			<trans-unit id="source_title.description">
-				<source>The source title</source>
+				<source>Title of the source; for example a title of a web page or an email subject.</source>
 			</trans-unit>
 			<trans-unit id="creator.description">
 				<source>The creator of the event</source>

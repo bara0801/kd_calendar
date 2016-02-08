@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-02T21:00:25Z" product-name="kd_calendar">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-08T14:02:44Z" product-name="kd_calendar">
 		<header/>
 		<body>
-			<trans-unit id="kind.description">
-				<source>kind</source>
-			</trans-unit>
 			<trans-unit id="id.description">
-				<source>id</source>
+				<source>Identifier of the calendar</source>
 			</trans-unit>
 			<trans-unit id="summary.description">
-				<source>summary</source>
+				<source>Title of the calendar</source>
 			</trans-unit>
 			<trans-unit id="description.description">
-				<source>description</source>
+				<source>Description of the calendar</source>
 			</trans-unit>
 			<trans-unit id="location.description">
-				<source>location</source>
+				<source>Geographic location of the calendar as free-form text</source>
 			</trans-unit>
 			<trans-unit id="time_zone.description">
-				<source>timeZone</source>
+				<source>The time zone of the calendar. (Formatted as an IANA Time Zone Database name, e.g. &quot;Europe/Zurich&quot;.)</source>
 			</trans-unit>
 			<trans-unit id="events.description">
 				<source>The events for this calendar</source>

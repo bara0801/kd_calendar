@@ -1,7 +1,6 @@
 <?php
 namespace KevinDitscheid\KdCalendar\Domain\Model;
 
-
 /***************************************************************
  *
  *  Copyright notice
@@ -34,56 +33,54 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * kind
-     *
-     * @var string
-     */
-    protected $kind = '';
-    
-    /**
-     * id
+     * Opaque identifier of the event
      *
      * @var string
      */
     protected $id = '';
     
     /**
-     * status
+     * Status of the event. Optional. Possible values are:
+     *
+     *     "confirmed" - The event is confirmed. This is the default status.
+     *     "tentative" - The event is tentatively confirmed.
+     *     "cancelled" - The event is cancelled.
      *
      * @var string
      */
     protected $status = '';
     
     /**
-     * htmlLink
+     * An absolute link to this event in the Google Calendar Web UI
      *
      * @var string
      */
     protected $htmlLink = '';
     
     /**
-     * summary
+     * Title of the event
      *
      * @var string
      */
     protected $summary = '';
     
     /**
-     * description
+     * Description of the event
      *
      * @var string
      */
     protected $description = '';
     
     /**
-     * location
+     * Geographic location of the event as free-form text
      *
      * @var string
      */
     protected $location = '';
     
     /**
-     * colorId
+     * The color of the event. This is an ID referring to an entry in the event section
+     * of the colors definition
      *
      * @var string
      */
@@ -97,42 +94,60 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $endTimeUnspecified = false;
     
     /**
-     * The recurrence
+     * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
+     * specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this
+     * field; event start and end times are specified in the start and end fields. This
+     * field is omitted for single events or instances of recurring events
      *
      * @var string
      */
     protected $recurrence = '';
     
     /**
-     * The id of the recurring event
+     * For an instance of a recurring event, this is the id of the recurring event to
+     * which this instance belongs
      *
      * @var string
      */
     protected $recurringEventId = '';
     
     /**
-     * The transparency
+     * Whether the event blocks time on the calendar. Optional. Possible values are:
+     *
+     *     "opaque" - The event blocks time on the calendar. This is the default value.
+     *     "transparent" - The event does not block time on the calendar
      *
      * @var string
      */
     protected $transparency = '';
     
     /**
-     * The visibility
+     * Visibility of the event. Optional. Possible values are:
+     *
+     *     "default" - Uses the default visibility for events on the calendar. This is
+     * the default value.
+     *     "public" - The event is public and event details are visible to all readers
+     * of the calendar.
+     *     "private" - The event is private and only event attendees may view event
+     * details.
+     *     "confidential" - The event is private. This value is provided for
+     * compatibility reasons
      *
      * @var string
      */
     protected $visibility = '';
     
     /**
-     * The ical uid
+     * Event unique identifier as defined in RFC5545. It is used to uniquely identify
+     * events accross calendaring systems and must be supplied when importing events
+     * via the import method
      *
      * @var string
      */
     protected $iCalUID = '';
     
     /**
-     * The sequence
+     * Sequence number as per iCalendar
      *
      * @var int
      */
@@ -149,56 +164,63 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $attendeesOmitted = false;
     
     /**
-     * extendedProperties
+     * Extended properties of the event
      *
      * @var string
      */
     protected $extendedProperties = '';
     
     /**
-     * The hangout link
+     * An absolute link to the Google+ hangout associated with this event
      *
      * @var string
      */
     protected $hangoutLink = '';
     
     /**
-     * anyoneCanAddSelf
+     * Whether anyone can invite themselves to the event. Optional. The default is
+     * False
      *
      * @var bool
      */
     protected $anyoneCanAddSelf = false;
     
     /**
-     * guestsCanInviteOthers
+     * Whether attendees other than the organizer can invite others to the event.
+     * Optional. The default is True
      *
      * @var bool
      */
     protected $guestsCanInviteOthers = false;
     
     /**
-     * guestsCanModify
+     * Whether attendees other than the organizer can modify the event. Optional. The
+     * default is False
      *
      * @var string
      */
     protected $guestsCanModify = '';
     
     /**
-     * guestsCanSeeOtherGuests
+     * Whether attendees other than the organizer can see who the event's attendees
+     * are. Optional. The default is True
      *
      * @var bool
      */
     protected $guestsCanSeeOtherGuests = false;
     
     /**
-     * privateCopy
+     * Whether this is a private event copy where changes are not shared with other
+     * copies on other calendars. Optional. Immutable. The default is False
      *
      * @var bool
      */
     protected $privateCopy = false;
     
     /**
-     * locked
+     * Whether this is a locked event copy where no changes can be made to the main
+     * event fields "summary", "description", "location", "start", "end" or
+     * "recurrence". The default is False
      *
      * @var bool
      */
@@ -212,14 +234,14 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $useDefaultReminder = false;
     
     /**
-     * The sourceUrl
+     * URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS.
      *
      * @var string
      */
     protected $sourceUrl = '';
     
     /**
-     * The source title
+     * Title of the source; for example a title of a web page or an email subject.
      *
      * @var string
      */
@@ -310,27 +332,6 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->attendees = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->reminders = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-    }
-    
-    /**
-     * Returns the kind
-     *
-     * @return string $kind
-     */
-    public function getKind()
-    {
-        return $this->kind;
-    }
-    
-    /**
-     * Sets the kind
-     *
-     * @param string $kind
-     * @return void
-     */
-    public function setKind($kind)
-    {
-        $this->kind = $kind;
     }
     
     /**
