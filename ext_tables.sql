@@ -12,6 +12,7 @@ CREATE TABLE tx_kdcalendar_domain_model_calendar (
 	location varchar(255) DEFAULT '' NOT NULL,
 	time_zone varchar(255) DEFAULT '' NOT NULL,
 	events int(11) unsigned DEFAULT '0' NOT NULL,
+	primary_cal tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -53,6 +53,23 @@ class Reminder extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $minutes = 0.0;
     
+	/**
+	 * Converts the google object to model
+	 *
+	 * @param \Google_Service_Calendar_EventReminder $reminderItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Reminder $reminder
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Reminder
+	 */
+	static public function convert($reminderItem, $reminder = NULL){
+		if($reminder === NULL){
+			$reminder = new \KevinDitscheid\KdCalendar\Domain\Model\Reminder();
+		}
+		$reminder->setMethod($reminderItem->getMethod());
+		$reminder->setMinutes($reminderItem->getMinutes());
+		return $reminder;
+	}
+	
     /**
      * Returns the method
      *

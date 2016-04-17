@@ -25,7 +25,10 @@
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.events">
 				<source>Events</source>
 			</trans-unit>
-			
+			<trans-unit id="tx_kdcalendar_domain_model_calendar.primary_cal">
+				<source>Primary</source>
+			</trans-unit>
+
 			<!-- Event Model -->
 			<trans-unit id="tx_kdcalendar_domain_model_event">
 				<source>Event</source>

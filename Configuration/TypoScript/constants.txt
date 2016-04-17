@@ -28,3 +28,18 @@ plugin.tx_kdcalendar_calendars {
 		storagePid =
 	}
 }
+
+module.tx_kdcalendar {
+	view {
+		# cat=module.tx_kdcalendar/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:kd_calendar/Resources/Private/Backend/Templates/
+		# cat=plugin.tx_kdcalendar/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:kd_calendar/Resources/Private/Backend/Partials/
+		# cat=plugin.tx_kdcalendar/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:kd_calendar/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=module.tx_kdcalendar//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

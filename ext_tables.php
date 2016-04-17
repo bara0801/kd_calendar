@@ -1,19 +1,36 @@
 <?php
+
 if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'KevinDitscheid.' . $_EXTKEY,
-	'Events',
-	'Events'
+	'KevinDitscheid.' . $_EXTKEY, 'Events', 'Events'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'KevinDitscheid.' . $_EXTKEY,
-	'Calendars',
-	'Calendars'
+	'KevinDitscheid.' . $_EXTKEY, 'Calendars', 'Calendars'
 );
+
+if (TYPO3_MODE === 'BE') {
+	/**
+	 * Registers a Backend Module
+	 */
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+		'KevinDitscheid.' . $_EXTKEY, 
+		'tools', // Make module a submodule of 'tools'
+		'calendar', // Submodule key
+		'', // Position
+		array(
+			'GoogleService' => 'authenticate',
+		), 
+		array(
+			'access' => 'user,group',
+			'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_calendar.xlf',
+		)
+	);
+}
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Calendar');
 

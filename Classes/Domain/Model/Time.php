@@ -56,6 +56,24 @@ class Time extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $timeZone = '';
     
+	/**
+	 * Convert google object to model
+	 *
+	 * @param \Google_Service_Calendar_EventDateTime $timeItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Time $time
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Time
+	 */
+	static public function convert($timeItem, $time = NULL){
+		if($time === NULL){
+			$time = new \KevinDitscheid\KdCalendar\Domain\Model\Time();
+		}
+		$time->setDate(\date_create($timeItem->getDate()));
+		$time->setDateTime(\date_create($timeItem->getDateTime()));
+		$time->setTimeZone($timeItem->getTimeZone());
+		return $time;
+	}
+	
     /**
      * Returns the date
      *
@@ -72,7 +90,7 @@ class Time extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $date
      * @return void
      */
-    public function setDate(\DateTime $date)
+    public function setDate(\DateTime $date = NULL)
     {
         $this->date = $date;
     }
@@ -93,7 +111,7 @@ class Time extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \DateTime $dateTime
      * @return void
      */
-    public function setDateTime(\DateTime $dateTime)
+    public function setDateTime(\DateTime $dateTime = NULL)
     {
         $this->dateTime = $dateTime;
     }

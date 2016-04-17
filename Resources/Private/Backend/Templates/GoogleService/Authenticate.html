@@ -1,0 +1,19 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:if condition="{authUrl}">
+		<f:then>
+			<f:form action="authenticate">
+				<label for="tx_kdcalendar_authCode">
+					Auth code:
+				</label>
+				<f:form.textfield id="tx_kdcalendar_authCode" name="authCode" value="" placeholder="Please enter the auth code" />
+				<f:form.submit value="Submit" />
+				<input type="hidden" value="{authUrl}" id="tx_kdcalendar_authUrl"/>
+			</f:form>
+		</f:then>
+		<f:else>
+			Google calendar is authenticated
+		</f:else>
+	</f:if>
+</f:section>

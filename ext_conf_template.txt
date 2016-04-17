@@ -1,0 +1,5 @@
+
+# cat=auth/10; type=string; label=The json string for google api authentification
+auth.jsonString = 
+# cat=auth/20; type=string; label=Path to the json file with google api authentification
+auth.jsonFile = 

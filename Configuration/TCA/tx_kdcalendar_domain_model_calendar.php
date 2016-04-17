@@ -116,6 +116,14 @@ return array(
 			),
 		),
 
+		'primary_cal' => array(
+			'execute' => 1,
+			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_calendar.primary_cal',
+			'config' => array(
+				'type' => 'check',
+				'default' => 0
+			)
+		),
 		'id' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_calendar.id',

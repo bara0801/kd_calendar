@@ -48,4 +48,33 @@ class ExtensionUtility {
 		return $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, self::EXTENSION_NAME);
 	}
 
+	/**
+	 * Find the extConf variables
+	 *
+	 * @return array
+	 */
+	static public function findExtensionConfiguration() {
+		$extConf = (array) @unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::EXTENSION_KEY]);
+		return \TYPO3\CMS\Core\Utility\GeneralUtility::removeDotsFromTS($extConf);
+	}
+
+	/**
+	 * Get the merged extension configuration (TypoScript and extConf)
+	 *
+	 * @return array
+	 */
+	static public function getMergedExtensionConfiguration() {
+		$ts = self::findTypoScriptVars();
+		$extConf = self::findExtensionConfiguration();
+		$conf = array();
+		if (\is_array($ts) && \is_array($extConf)) {
+			$conf = \array_merge($extConf, $ts);
+		} elseif (!\is_array($ts) && \is_array($extConf)) {
+			$conf = $extConf;
+		} elseif (\is_array($ts) && !\is_array($extConf)) {
+			$conf = $ts;
+		}
+		return $conf;
+	}
+
 }

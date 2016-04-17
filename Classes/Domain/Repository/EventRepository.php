@@ -29,8 +29,51 @@ namespace KevinDitscheid\KdCalendar\Domain\Repository;
 /**
  * The repository for Events
  */
-class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
-{
-
-    
+class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+	/**
+	 * Google calendar service
+	 *
+	 * @var \KevinDitscheid\KdCalendar\Service\GoogleCalendarService
+	 * @inject
+	 */
+	protected $googleCalendarService = NULL;
+	
+	/**
+	 * The sys_registry
+	 *
+	 * @var \TYPO3\CMS\Core\Registry
+	 * @inject
+	 */
+	protected $registry;
+	
+	/**
+	 * The calendar repository
+	 *
+	 * @var \KevinDitscheid\KdCalendar\Domain\Repository\CalendarRepository
+	 * @inject
+	 */
+	protected $calendarRepository;
+	
+	/**
+	 * Initialize the event repository
+	 */
+    public function initializeObject(){
+		if($this->registry->get('tx_kdcalendar', 'eventsexpired') <= time()){
+			foreach($this->calendarRepository->findAll() as $calendar){
+				$events = $this->googleCalendarService->fetchEvents($calendar->getId());
+				foreach($events->getItems() as $eventItem){
+					$event = $this->findById($eventItem->getId())->getFirst();
+					if($event === NULL){
+						$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem);
+						$this->add($event);
+					}else{
+						$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem, $event);
+						$this->update($event);
+					}
+				}
+			}
+			$this->persistenceManager->persistAll();
+			$this->registry->set('tx_kdcalendar', 'eventsexpired', time() + 24 * 60 * 60);
+		}
+	}
 }

@@ -32,5 +32,40 @@ namespace KevinDitscheid\KdCalendar\Domain\Repository;
 class CalendarRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
-    
+	/**
+	 * Google calendar service
+	 *
+	 * @var \KevinDitscheid\KdCalendar\Service\GoogleCalendarService
+	 * @inject
+	 */
+	protected $googleCalendarService = NULL;
+	
+	/**
+	 * The sys_registry
+	 *
+	 * @var \TYPO3\CMS\Core\Registry
+	 * @inject
+	 */
+	protected $registry;
+	
+	/**
+	 * Initialize the calendar repository
+	 */
+	public function initializeObject(){
+		if($this->registry->get('tx_kdcalendar', 'calendarexpired') <= time()){
+			$calendars = $this->googleCalendarService->fetchCalendars();
+			foreach($calendars->getItems() as $calendarItem){
+				$calendar = $this->findById($calendarItem->getId())->getFirst();
+				if($calendar === NULL){
+					$calendar = \KevinDitscheid\KdCalendar\Domain\Model\Calendar::convert($calendarItem);
+					$this->add($calendar);
+				}else{
+					$calendar = \KevinDitscheid\KdCalendar\Domain\Model\Calendar::convert($calendarItem, $calendar);
+					$this->update($calendar);
+				}
+			}
+			$this->persistenceManager->persistAll();
+			$this->registry->set('tx_kdcalendar', 'calendarexpired', time() + 24 * 60 * 60);
+		}
+	}
 }

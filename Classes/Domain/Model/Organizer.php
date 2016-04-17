@@ -61,6 +61,25 @@ class Organizer extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      */
     protected $self = false;
     
+	/**
+	 * Convert the google object to model
+	 *
+	 * @param \Google_Service_Calendar_EventOrganizer $organizerItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Organizer $organizer
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Organizer
+	 */
+	static public function convert($organizerItem, $organizer = NULL){
+		if($organizer === NULL){
+			$organizer = new \KevinDitscheid\KdCalendar\Domain\Model\Organizer();
+		}
+		$organizer->setDisplayName($organizerItem->getDisplayName());
+		$organizer->setEmail($organizerItem->getEmail());
+		$organizer->setId($organizerItem->getId());
+		$organizer->setSelf($organizerItem->getSelf());
+		return $organizer;
+	}
+	
     /**
      * Returns the id
      *

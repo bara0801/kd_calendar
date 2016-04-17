@@ -61,6 +61,25 @@ class Creator extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      */
     protected $self = false;
     
+	/**
+	 * Convert google object to model
+	 *
+	 * @param \Google_Service_Calendar_EventCreator $creatorItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Creator $creator
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Creator
+	 */
+	static public function convert($creatorItem, $creator = NULL){
+		if($creator === NULL){
+			$creator = new \KevinDitscheid\KdCalendar\Domain\Model\Creator();
+		}
+		$creator->setDisplayName($creatorItem->getDisplayName());
+		$creator->setEmail($creatorItem->getEmail());
+		$creator->setId($creatorItem->getId());
+		$creator->setSelf($creatorItem->getSelf());
+		return $creator;
+	}
+	
     /**
      * Returns the id
      *

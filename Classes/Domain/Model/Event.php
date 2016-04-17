@@ -312,6 +312,115 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $attachments = null;
 
 	/**
+	 * Insert the google data into the model
+	 *
+	 * @param \Google_Service_Calendar_Event $eventItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Event $event
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Event
+	 */
+	static public function convert($eventItem, $event = NULL){
+		if($event === NULL){
+			$event = new \KevinDitscheid\KdCalendar\Domain\Model\Event();
+		}
+		$event->setId($eventItem->getId());
+		$event->setDescription($eventItem->getDescription());
+		$event->setSummary($eventItem->getSummary());
+		$event->setColorId($eventItem->getColorId());
+		$event->setStatus($eventItem->getStatus());
+		$event->setVisibility($eventItem->getVisibility());
+		$event->setEndTimeUnspecified($eventItem->getEndTimeUnspecified());
+		$event->setAnyoneCanAddSelf($eventItem->getAnyoneCanAddSelf());
+		$event->setHtmlLink($eventItem->getHtmlLink());
+		$event->setICalUID($eventItem->getICalUID());
+		$event->setAttendeesOmitted($eventItem->getAttendeesOmitted());
+		$event->setExtendedProperties($eventItem->getExtendedProperties());
+		$event->setGuestsCanInviteOthers($eventItem->getGuestsCanInviteOthers());
+		$event->setGuestsCanSeeOtherGuests($eventItem->getGuestsCanSeeOtherGuests());
+		$event->setHangoutLink($eventItem->getHangoutLink());
+		$event->setLocation($eventItem->getLocation());
+		$event->setLocked($eventItem->getLocked());
+		$event->setPrivateCopy($eventItem->getPrivateCopy());
+		$event->setRecurrence($eventItem->getRecurrence());
+		$event->setRecurringEventId($eventItem->getRecurringEventId());
+		$event->setSequence($eventItem->getSequence());
+		
+		$event->setAttachments(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage());
+		foreach($eventItem->getAttachments() as $attachment){
+			$event->addAttachment(
+				\KevinDitscheid\KdCalendar\Domain\Model\Attachment::convert($attachment)
+			);
+		}
+		
+		$event->setAttendees(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage());
+		foreach($eventItem->getAttendees() as $attendee){
+			$event->addAttendee(
+				\KevinDitscheid\KdCalendar\Domain\Model\Attendees::convert($attendee)
+			);
+		}
+		
+		if($eventItem->getCreator()){
+			$event->setCreator(
+				\KevinDitscheid\KdCalendar\Domain\Model\Creator::convert($eventItem->getCreator(), $event->getCreator())
+			);
+		}else{
+			$event->setCreator(NULL);
+		}
+		if($eventItem->getGadget()){
+			$event->setGadget(
+				\KevinDitscheid\KdCalendar\Domain\Model\Gadget::convert($eventItem->getGadget(), $event->getGadget())
+			);
+		}else{
+			$event->setCreator(NULL);
+		}
+		if($eventItem->getStart()){
+			$event->setStart(
+				\KevinDitscheid\KdCalendar\Domain\Model\Time::convert($eventItem->getStart(), $event->getStart())
+			);
+		}else{
+			$event->setStart(NULL);
+		}
+		if($eventItem->getEnd()){
+			$event->setEnd(
+				\KevinDitscheid\KdCalendar\Domain\Model\Time::convert($eventItem->getEnd(), $event->getEnd())
+			);
+		}else{
+			$event->setEnd(NULL);
+		}
+		if($eventItem->getOriginalStartTime()){
+			$event->setOriginalStartTime(
+				\KevinDitscheid\KdCalendar\Domain\Model\Time::convert($eventItem->getOriginalStartTime(), $event->getOriginalStartTime())
+			);
+		}else{
+			$event->setOriginalStartTime(NULL);
+		}
+		if($eventItem->getOrganizer()){
+			$event->setOrganizer(
+				\KevinDitscheid\KdCalendar\Domain\Model\Organizer::convert($eventItem->getOrganizer(), $event->getOrganizer())
+			);
+		}else{
+			$event->setOrganizer(NULL);
+		}
+		
+		$event->setReminders(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage());
+		$reminders = $eventItem->getReminders();
+		if($reminders){
+			$event->setUseDefaultReminder($reminders->getUseDefault());
+			foreach($reminders->getOverrides() as $reminder){
+				$event->addReminder(
+					\KevinDitscheid\KdCalendar\Domain\Model\Reminder::convert($reminder)
+				);
+			}
+		}
+		
+		$source = $eventItem->getSource();
+		$event->setSourceTitle($source['title']);
+		$event->setSourceUrl($source['url']);
+		
+		return $event;
+	}
+	
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -913,7 +1022,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Creator $creator
 	 * @return void
 	 */
-	public function setCreator(\KevinDitscheid\KdCalendar\Domain\Model\Creator $creator) {
+	public function setCreator(\KevinDitscheid\KdCalendar\Domain\Model\Creator $creator = NULL) {
 		$this->creator = $creator;
 	}
 
@@ -932,7 +1041,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Organizer $organizer
 	 * @return void
 	 */
-	public function setOrganizer(\KevinDitscheid\KdCalendar\Domain\Model\Organizer $organizer) {
+	public function setOrganizer(\KevinDitscheid\KdCalendar\Domain\Model\Organizer $organizer = NULL) {
 		$this->organizer = $organizer;
 	}
 
@@ -951,7 +1060,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Time $start
 	 * @return void
 	 */
-	public function setStart(\KevinDitscheid\KdCalendar\Domain\Model\Time $start) {
+	public function setStart(\KevinDitscheid\KdCalendar\Domain\Model\Time $start = NULL) {
 		$this->start = $start;
 	}
 
@@ -970,7 +1079,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Time $end
 	 * @return void
 	 */
-	public function setEnd(\KevinDitscheid\KdCalendar\Domain\Model\Time $end) {
+	public function setEnd(\KevinDitscheid\KdCalendar\Domain\Model\Time $end = NULL) {
 		$this->end = $end;
 	}
 
@@ -989,7 +1098,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Time $originalStartTime
 	 * @return void
 	 */
-	public function setOriginalStartTime(\KevinDitscheid\KdCalendar\Domain\Model\Time $originalStartTime) {
+	public function setOriginalStartTime(\KevinDitscheid\KdCalendar\Domain\Model\Time $originalStartTime = NULL) {
 		$this->originalStartTime = $originalStartTime;
 	}
 
@@ -1047,7 +1156,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Gadget $gadget
 	 * @return void
 	 */
-	public function setGadget(\KevinDitscheid\KdCalendar\Domain\Model\Gadget $gadget) {
+	public function setGadget(\KevinDitscheid\KdCalendar\Domain\Model\Gadget $gadget = NULL) {
 		$this->gadget = $gadget;
 	}
 

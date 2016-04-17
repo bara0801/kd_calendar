@@ -78,7 +78,35 @@ class Calendar extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $events = null;
+	
+	/**
+	 * Calendar is primary
+	 *
+	 * @var bool
+	 */
+	protected $primaryCal = FALSE;
     
+	/**
+	 * Insert data from the google object into the model
+	 *
+	 * @param \Google_Service_Calendar_CalendarListEntry $calendarItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Calendar
+	 */
+	static public function convert($calendarItem, $calendar = NULL){
+		if($calendar === NULL){
+			$calendar = new \KevinDitscheid\KdCalendar\Domain\Model\Calendar();
+		}
+		$calendar->setId($calendarItem->getId());
+		$calendar->setDescription($calendarItem->getDescription());
+		$calendar->setPrimaryCal($calendarItem->getPrimary());
+		$calendar->setSummary($calendarItem->getSummary());
+		$calendar->setTimeZone($calendarItem->getTimeZone());
+		$calendar->setLocation($calendarItem->getLocation());
+		return $calendar;
+	}
+	
     /**
      * __construct
      */
@@ -249,4 +277,21 @@ class Calendar extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->events = $events;
     }
 
+	/**
+	 * Get primary
+	 *
+	 * @return boolean
+	 */
+	public function getPrimaryCal() {
+		return $this->primaryCal;
+	}
+
+	/**
+	 * Set primary
+	 *
+	 * @param boolean $primaryCal
+	 */
+	public function setPrimaryCal($primaryCal) {
+		$this->primaryCal = $primaryCal;
+	}
 }

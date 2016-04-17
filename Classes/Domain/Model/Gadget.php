@@ -92,6 +92,29 @@ class Gadget extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $preferences = '';
     
+	/**
+	 * Convert google object to model
+	 *
+	 * @param \Google_Service_Calendar_EventGadget $gadgetItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Gadget $gadget
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Gadget
+	 */
+	static public function convert($gadgetItem, $gadget = NULL){
+		if($gadget === NULL){
+			$gadget = new \KevinDitscheid\KdCalendar\Domain\Model\Gadget();
+		}
+		$gadget->setDisplay($gadgetItem->getDisplay());
+		$gadget->setHeight($gadgetItem->getHeight());
+		$gadget->setIconLink($gadgetItem->getIconLink());
+		$gadget->setLink($gadgetItem->getLink());
+		$gadget->setPreferences($gadgetItem->getPreferences());
+		$gadget->setTitle($gadgetItem->getTitle());
+		$gadget->setType($gadgetItem->getType());
+		$gadget->setWidth($gadgetItem->getWidth());
+		return $gadget;
+	}
+	
     /**
      * Returns the type
      *

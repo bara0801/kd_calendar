@@ -96,6 +96,30 @@ class Attendees extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $comment = '';
     
+	/**
+	 * Fill data from google object into model
+	 *
+	 * @param \Google_Service_Calendar_EventAttendee $attendeeItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Attendees $attendee
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Attendees
+	 */
+	static public function convert($attendeeItem, $attendee = NULL){
+		if($attendee === NULL){
+			$attendee = new \KevinDitscheid\KdCalendar\Domain\Model\Attendees();
+		}
+		$attendee->setAdditionalGuests($attendeeItem->getAdditionalGuests());
+		$attendee->setComment($attendeeItem->getComment());
+		$attendee->setEmail($attendeeItem->getEmail());
+		$attendee->setId($attendeeItem->getId());
+		$attendee->setOptional($attendeeItem->getOptional());
+		$attendee->setOrganizer($attendeeItem->getOrganizer());
+		$attendee->setResource($attendeeItem->getResource());
+		$attendee->setResponseStatus($attendeeItem->getResponseStatus());
+		$attendee->setSelf($attendeeItem->getSelf());
+		return $attendee;
+	}
+	
     /**
      * Returns the id
      *

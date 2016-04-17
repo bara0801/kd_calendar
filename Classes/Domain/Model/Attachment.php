@@ -67,6 +67,26 @@ class Attachment extends \TYPO3\CMS\Extbase\Domain\Model\File
      */
     protected $fileId = '';
     
+	/**
+	 * Fills the data from google calendar object into the model
+	 * 
+	 * @param \Google_Service_Calendar_EventAttachment $attachmentItem
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Attachment $attachment
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Attachment
+	 */
+	static public function convert($attachmentItem, $attachment = NULL){
+		if($attachment === NULL){
+			$attachment = new \KevinDitscheid\KdCalendar\Domain\Model\Attachment();
+		}
+		$attachment->setFileId($attachmentItem->getFileId());
+		$attachment->setFileUrl($attachmentItem->getFileUrl());
+		$attachment->setIconLink($attachmentItem->getIconLink());
+		$attachment->setMimeType($attachmentItem->getMimeType());
+		$attachment->setTitle($attachmentItem->getTitle());
+		return $attachment;
+	}
+	
     /**
      * Returns the fileUrl
      *
