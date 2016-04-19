@@ -334,7 +334,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$event->setHtmlLink($eventItem->getHtmlLink());
 		$event->setICalUID($eventItem->getICalUID());
 		$event->setAttendeesOmitted($eventItem->getAttendeesOmitted());
-		$event->setExtendedProperties($eventItem->getExtendedProperties());
+		//$event->setExtendedProperties($eventItem->getExtendedProperties());
 		$event->setGuestsCanInviteOthers($eventItem->getGuestsCanInviteOthers());
 		$event->setGuestsCanSeeOtherGuests($eventItem->getGuestsCanSeeOtherGuests());
 		$event->setHangoutLink($eventItem->getHangoutLink());

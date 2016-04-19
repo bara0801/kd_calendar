@@ -8,6 +8,11 @@ if (!defined('TYPO3_MODE')) {
 	'KevinDitscheid.' . $_EXTKEY, 'Events', 'Events'
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+	'kdcalendar_events', 
+	'FILE:EXT:kd_calendar/Configuration/FlexForms/Events.xml'
+);
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'KevinDitscheid.' . $_EXTKEY, 'Calendars', 'Calendars'
 );
@@ -22,7 +27,7 @@ if (TYPO3_MODE === 'BE') {
 		'calendar', // Submodule key
 		'', // Position
 		array(
-			'GoogleService' => 'authenticate',
+			'GoogleService' => 'authenticate,loadCalendars,loadEvents',
 		), 
 		array(
 			'access' => 'user,group',

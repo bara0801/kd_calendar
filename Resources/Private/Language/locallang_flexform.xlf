@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-08T14:02:44Z" product-name="kd_calendar">
+		<header/>
+		<body>
+			<trans-unit id="events.sheet.general">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="events.settings.calendar">
+				<source>Calendar to list events from</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

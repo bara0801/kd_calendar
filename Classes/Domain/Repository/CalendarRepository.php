@@ -51,21 +51,52 @@ class CalendarRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 	/**
 	 * Initialize the calendar repository
 	 */
-	public function initializeObject(){
-		if($this->registry->get('tx_kdcalendar', 'calendarexpired') <= time()){
-			$calendars = $this->googleCalendarService->fetchCalendars();
-			foreach($calendars->getItems() as $calendarItem){
-				$calendar = $this->findById($calendarItem->getId())->getFirst();
-				if($calendar === NULL){
-					$calendar = \KevinDitscheid\KdCalendar\Domain\Model\Calendar::convert($calendarItem);
-					$this->add($calendar);
-				}else{
-					$calendar = \KevinDitscheid\KdCalendar\Domain\Model\Calendar::convert($calendarItem, $calendar);
-					$this->update($calendar);
-				}
+	public function loadCalendars(){
+		$calendars = $this->googleCalendarService->fetchCalendars();
+		foreach($calendars->getItems() as $calendarItem){
+			$calendar = $this->findById($calendarItem->getId())->getFirst();
+			if($calendar === NULL){
+				$calendar = \KevinDitscheid\KdCalendar\Domain\Model\Calendar::convert($calendarItem);
+				$this->add($calendar);
+			}else{
+				$calendar = \KevinDitscheid\KdCalendar\Domain\Model\Calendar::convert($calendarItem, $calendar);
+				$this->update($calendar);
 			}
-			$this->persistenceManager->persistAll();
-			$this->registry->set('tx_kdcalendar', 'calendarexpired', time() + 24 * 60 * 60);
 		}
+		$this->persistCalendars();
+	}
+	
+	/**
+	 * Save calendars to database and add expire date
+	 *
+	 * @return void
+	 */
+	protected function persistCalendars(){
+		$this->persistenceManager->persistAll();
+		$this->registry->set('tx_kdcalendar', 'calendarexpired', time() + 24 * 60 * 60);
+	}
+	
+	/**
+	 * Checks if the calendars have been loaded
+	 *
+	 * @return boolean
+	 */
+	public function calendarsLoaded(){
+		if($this->registry->get('tx_kdcalendar', 'calendarexpired')){
+			return TRUE;
+		}
+		return FALSE;
+	}
+	
+	/**
+	 * Checks if the calendars have expired
+	 *
+	 * @return boolean
+	 */
+	public function calendarsExpired(){
+		if($this->registry->get('tx_kdcalendar', 'calendarexpired') <= time()){
+			return TRUE;
+		}
+		return FALSE;
 	}
 }

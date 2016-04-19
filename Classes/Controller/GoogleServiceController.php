@@ -22,6 +22,22 @@ namespace KevinDitscheid\KdCalendar\Controller;
  */
 class GoogleServiceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController{
 	/**
+     * calendarRepository
+     *
+     * @var \KevinDitscheid\KdCalendar\Domain\Repository\CalendarRepository
+     * @inject
+     */
+    protected $calendarRepository = NULL;
+	
+	/**
+     * eventRepository
+     *
+     * @var \KevinDitscheid\KdCalendar\Domain\Repository\EventRepository
+     * @inject
+     */
+    protected $eventRepository = NULL;
+	
+	/**
 	 * The google calendar service
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Service\GoogleCalendarService
@@ -33,8 +49,9 @@ class GoogleServiceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
 	 * Action to authenticate the google calendar
 	 *
 	 * @param string $authCode
+	 * @param bool $eventsLoaded
 	 */
-	public function authenticateAction($authCode = NULL){
+	public function authenticateAction($authCode = NULL, $eventsLoaded = FALSE){
 		if($authCode){
 			$this->googleService->createCredentials($authCode);
 		}
@@ -49,5 +66,29 @@ class GoogleServiceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
 				'credentials' => $credentials
 			)
 		);
+		if($this->calendarRepository->calendarsLoaded()){
+			$this->view->assign('calendarsLoaded', TRUE);
+			$this->view->assign('calendars', $this->calendarRepository->findAll());
+		}
+		$this->view->assign('eventsLoaded', $eventsLoaded);
+	}
+	
+	/**
+	 * Loads the calendars
+	 */
+	public function loadCalendarsAction(){
+		$this->calendarRepository->loadCalendars();
+		$this->forward('authenticate');
+	}
+	
+	/**
+	 * Loads the events from the given calendar
+	 *
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
+	 */
+	public function loadEventsAction(\KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar){
+		$this->eventRepository->setCalendar($calendar);
+		$this->eventRepository->loadEvents();
+		$this->forward('authenticate', NULL, NULL, array('eventsLoaded' => TRUE));
 	}
 }

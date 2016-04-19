@@ -13,7 +13,26 @@
 			</f:form>
 		</f:then>
 		<f:else>
-			Google calendar is authenticated
+			<p class="success">
+				Google calendar is authenticated
+				<f:if condition="{calendarsLoaded}">
+					<br />Calendars successfully loaded
+				</f:if>
+				<f:if condition="{eventsLoaded}">
+					<br />Events successfully loaded
+				</f:if>
+			</p>
+			<p>
+				<f:link.action action="loadCalendars">Load calendars</f:link.action>
+			</p>
+			<f:if condition="{calendars}">
+				<p>
+					Load events for:
+					<f:for each="{calendars}" as="calendar">
+						<f:link.action action="loadEvents" arguments="{calendar: calendar}">{calendar.id}</f:link.action><br />
+					</f:for>
+				</p>
+			</f:if>
 		</f:else>
 	</f:if>
 </f:section>

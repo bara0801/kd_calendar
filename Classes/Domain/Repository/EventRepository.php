@@ -55,25 +55,82 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	protected $calendarRepository;
 	
 	/**
+	 * The calendar to use
+	 *
+	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Calendar
+	 */
+	protected $calendar;
+	
+	/**
 	 * Initialize the event repository
 	 */
-    public function initializeObject(){
-		if($this->registry->get('tx_kdcalendar', 'eventsexpired') <= time()){
-			foreach($this->calendarRepository->findAll() as $calendar){
-				$events = $this->googleCalendarService->fetchEvents($calendar->getId());
-				foreach($events->getItems() as $eventItem){
-					$event = $this->findById($eventItem->getId())->getFirst();
-					if($event === NULL){
-						$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem);
-						$this->add($event);
-					}else{
-						$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem, $event);
-						$this->update($event);
-					}
-				}
+    public function loadEvents(){
+		$events = $this->googleCalendarService->fetchEvents($this->calendar->getId());
+		foreach($events->getItems() as $eventItem){
+			$event = $this->findById($eventItem->getId())->getFirst();
+			if($event === NULL){
+				$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem);
+				$this->add($event);
+			}else{
+				$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem, $event);
+				$this->update($event);
 			}
-			$this->persistenceManager->persistAll();
-			$this->registry->set('tx_kdcalendar', 'eventsexpired', time() + 24 * 60 * 60);
 		}
+		$this->persistEvents();
 	}
+	
+	/**
+	 * Checks if the events from the calendar have been loaded
+	 *
+	 * @return boolean
+	 */
+	public function eventsLoaded(){
+		if($this->registry->get('tx_kd_calendar', 'eventsexpired_' . $this->calendar->getId())){
+			return TRUE;
+		}
+		return FALSE;
+	}
+	
+	/**
+	 * Checks if the events have expired
+	 *
+	 * @return boolean
+	 */
+	public function eventsExpired(){
+		if($this->registry->get('tx_kd_calendar', 'eventsexpired_' . $this->calendar->getId()) <= time()){
+			return TRUE;
+		}
+		return FALSE;
+	}
+	
+	/**
+	 * Save the events to database and add expire date
+	 *
+	 * @return void
+	 */
+	protected function persistEvents(){
+		$this->persistenceManager->persistAll();
+		$this->registry->set('tx_kdcalendar', 'eventsexpired_' . $this->calendar->getId(), time() + 24 * 60 * 60);
+	}
+	
+	/**
+	 * Get the calendar
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Calendar
+	 */
+	public function getCalendar() {
+		return $this->calendar;
+	}
+
+	/**
+	 * Set the calendar
+	 *
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
+	 *
+	 * @return void
+	 */
+	public function setCalendar(\KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar) {
+		$this->calendar = $calendar;
+	}
+
 }
