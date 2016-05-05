@@ -208,10 +208,17 @@ class GoogleCalendarService {
 	 *
 	 * @return \Google_Service_Calendar_Events
 	 */
-	public function fetchEvents($calendarId){
+	public function fetchEvents($calendarId, $limit = 0, $date = NULL){
 		$this->initCalendarService();
 		$events = $this->getEventsResource();
-		return $events->listEvents($calendarId);
+		$optParams = array();
+		if($limit > 0){
+			$optParams['maxResults'] = $limit;
+		}
+		if($date !== NULL){
+			$optParams['timeMin'] = $date->format('c');
+		}
+		return $events->listEvents($calendarId, $optParams);
 	}
 	
 	/**

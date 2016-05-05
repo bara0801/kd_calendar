@@ -65,6 +65,9 @@ if (TYPO3_MODE === 'BE') {
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_kdcalendar_domain_model_attendees', 'EXT:kd_calendar/Resources/Private/Language/locallang_csh_tx_kdcalendar_domain_model_attendees.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_kdcalendar_domain_model_attendees');
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_kdcalendar_domain_model_attachment', 'EXT:kd_calendar/Resources/Private/Language/locallang_csh_tx_kdcalendar_domain_model_attachment.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_kdcalendar_domain_model_attachment');
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_kdcalendar_domain_model_gadget', 'EXT:kd_calendar/Resources/Private/Language/locallang_csh_tx_kdcalendar_domain_model_gadget.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_kdcalendar_domain_model_gadget');
 

@@ -1,300 +1,300 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2016-02-08T14:02:44Z" product-name="kd_calendar">
+	<file source-language="en" target-language="nl" datatype="plaintext" original="messages" date="2016-02-08T14:02:44Z" product-name="kd_calendar">
 		<header/>
 		<body>
 			<!-- Date -->
 			<trans-unit id="month.1">
-				<source>January</source>
+				<target>Januari</target>
 			</trans-unit>
 			<trans-unit id="month.2">
-				<source>February</source>
+				<target>Februari</target>
 			</trans-unit>
 			<trans-unit id="month.3">
-				<source>March</source>
+				<target>Maart</target>
 			</trans-unit>
 			<trans-unit id="month.4">
-				<source>April</source>
+				<target>April</target>
 			</trans-unit>
 			<trans-unit id="month.5">
-				<source>May</source>
+				<target>Mei</target>
 			</trans-unit>
 			<trans-unit id="month.6">
-				<source>June</source>
+				<target>Juni</target>
 			</trans-unit>
 			<trans-unit id="month.7">
-				<source>July</source>
+				<target>Juli</target>
 			</trans-unit>
 			<trans-unit id="month.8">
-				<source>August</source>
+				<target>Augustus</target>
 			</trans-unit>
 			<trans-unit id="month.9">
-				<source>September</source>
+				<target>September</target>
 			</trans-unit>
 			<trans-unit id="month.10">
-				<source>October</source>
+				<target>Oktober</target>
 			</trans-unit>
 			<trans-unit id="month.11">
-				<source>November</source>
+				<target>November</target>
 			</trans-unit>
 			<trans-unit id="month.12">
-				<source>December</source>
+				<target>December</target>
 			</trans-unit>
 			
 			<trans-unit id="tx_kdcalendar_domain_model_calendar">
-				<source>Calendar</source>
+				<target>Calendar</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.id">
-				<source>Id</source>
+				<target>Id</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.summary">
-				<source>Summary</source>
+				<target>Summary</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.description">
-				<source>Description</source>
+				<target>Description</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.location">
-				<source>Location</source>
+				<target>Location</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.time_zone">
-				<source>Time Zone</source>
+				<target>Time Zone</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_calendar.events">
-				<source>Events</source>
+				<target>Events</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event">
-				<source>Event</source>
+				<target>Event</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.id">
-				<source>Id</source>
+				<target>Id</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.status">
-				<source>Status</source>
+				<target>Status</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.html_link">
-				<source>Html Link</source>
+				<target>Html Link</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.summary">
-				<source>Summary</source>
+				<target>Summary</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.description">
-				<source>Description</source>
+				<target>Description</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.location">
-				<source>Location</source>
+				<target>Location</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.color_id">
-				<source>Color Id</source>
+				<target>Color Id</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.end_time_unspecified">
-				<source>End Time Unspecified</source>
+				<target>End Time Unspecified</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.recurrence">
-				<source>Recurrence</source>
+				<target>Recurrence</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.recurring_event_id">
-				<source>Recurring Event Id</source>
+				<target>Recurring Event Id</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.transparency">
-				<source>Transparency</source>
+				<target>Transparency</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.visibility">
-				<source>Visibility</source>
+				<target>Visibility</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.i_cal_u_i_d">
-				<source>I Cal U I D</source>
+				<target>I Cal U I D</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.sequence">
-				<source>Sequence</source>
+				<target>Sequence</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.attendees_omitted">
-				<source>Attendees Omitted</source>
+				<target>Attendees Omitted</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.extended_properties">
-				<source>Extended Properties</source>
+				<target>Extended Properties</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.hangout_link">
-				<source>Hangout Link</source>
+				<target>Hangout Link</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.anyone_can_add_self">
-				<source>Anyone Can Add Self</source>
+				<target>Anyone Can Add Self</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.guests_can_invite_others">
-				<source>Guests Can Invite Others</source>
+				<target>Guests Can Invite Others</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.guests_can_modify">
-				<source>Guests Can Modify</source>
+				<target>Guests Can Modify</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.guests_can_see_other_guests">
-				<source>Guests Can See Other Guests</source>
+				<target>Guests Can See Other Guests</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.private_copy">
-				<source>Private Copy</source>
+				<target>Private Copy</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.locked">
-				<source>Locked</source>
+				<target>Locked</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.use_default_reminder">
-				<source>Use Default Reminder</source>
+				<target>Use Default Reminder</target>
 			</trans-unit>
-			<trans-unit id="tx_kdcalendar_domain_model_event.source_url">
-				<source>Source Url</source>
+			<trans-unit id="tx_kdcalendar_domain_model_event.target_url">
+				<target>Source Url</target>
 			</trans-unit>
-			<trans-unit id="tx_kdcalendar_domain_model_event.source_title">
-				<source>Source Title</source>
+			<trans-unit id="tx_kdcalendar_domain_model_event.target_title">
+				<target>Source Title</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.creator">
-				<source>Creator</source>
+				<target>Creator</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.organizer">
-				<source>Organizer</source>
+				<target>Organizer</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.start">
-				<source>Start</source>
+				<target>Start</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.end">
-				<source>End</source>
+				<target>End</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.original_start_time">
-				<source>Original Start Time</source>
+				<target>Original Start Time</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.attendees">
-				<source>Attendees</source>
+				<target>Attendees</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.gadget">
-				<source>Gadget</source>
+				<target>Gadget</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.reminders">
-				<source>Reminders</source>
+				<target>Reminders</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_event.attachments">
-				<source>Attachments</source>
+				<target>Attachments</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_creator">
-				<source>Creator</source>
+				<target>Creator</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_creator.id">
-				<source>Id</source>
+				<target>Id</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_creator.email">
-				<source>Email</source>
+				<target>Email</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_creator.display_name">
-				<source>Display Name</source>
+				<target>Display Name</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_creator.self">
-				<source>Self</source>
+				<target>Self</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_organizer">
-				<source>Organizer</source>
+				<target>Organizer</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_organizer.id">
-				<source>Id</source>
+				<target>Id</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_organizer.email">
-				<source>Email</source>
+				<target>Email</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_organizer.display_name">
-				<source>Display Name</source>
+				<target>Display Name</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_organizer.self">
-				<source>Self</source>
+				<target>Self</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_time">
-				<source>Time</source>
+				<target>Time</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_time.date">
-				<source>Date</source>
+				<target>Date</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_time.date_time">
-				<source>Date Time</source>
+				<target>Date Time</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_time.time_zone">
-				<source>Time Zone</source>
+				<target>Time Zone</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees">
-				<source>Attendees</source>
+				<target>Attendees</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.id">
-				<source>Id</source>
+				<target>Id</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.email">
-				<source>Email</source>
+				<target>Email</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.organizer">
-				<source>Organizer</source>
+				<target>Organizer</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.self">
-				<source>Self</source>
+				<target>Self</target>
 			</trans-unit>
-			<trans-unit id="tx_kdcalendar_domain_model_attendees.resource">
-				<source>Resource</source>
+			<trans-unit id="tx_kdcalendar_domain_model_attendees.retarget">
+				<target>Retarget</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.response_status">
-				<source>Response Status</source>
+				<target>Response Status</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.optional">
-				<source>Optional</source>
+				<target>Optional</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.additional_guests">
-				<source>Additional Guests</source>
+				<target>Additional Guests</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.comment">
-				<source>Comment</source>
+				<target>Comment</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget">
-				<source>Gadget</source>
+				<target>Gadget</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.type">
-				<source>Type</source>
+				<target>Type</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.title">
-				<source>Title</source>
+				<target>Title</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.display">
-				<source>Display</source>
+				<target>Display</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.width">
-				<source>Width</source>
+				<target>Width</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.height">
-				<source>Height</source>
+				<target>Height</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.icon_link">
-				<source>Icon Link</source>
+				<target>Icon Link</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.link">
-				<source>Link</source>
+				<target>Link</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget.preferences">
-				<source>Preferences</source>
+				<target>Preferences</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_reminder">
-				<source>Reminder</source>
+				<target>Reminder</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_reminder.method">
-				<source>Method</source>
+				<target>Method</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_reminder.minutes">
-				<source>Minutes</source>
+				<target>Minutes</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attachment">
-				<source>Attachment</source>
+				<target>Attachment</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attachment.file_url">
-				<source>File Url</source>
+				<target>File Url</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attachment.title">
-				<source>Title</source>
+				<target>Title</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attachment.mime_type">
-				<source>Mime Type</source>
+				<target>Mime Type</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attachment.icon_link">
-				<source>Icon Link</source>
+				<target>Icon Link</target>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attachment.file_id">
-				<source>File Id</source>
+				<target>File Id</target>
 			</trans-unit>
 		</body>
 	</file>

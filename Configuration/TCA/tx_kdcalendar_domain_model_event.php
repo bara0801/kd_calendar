@@ -523,18 +523,42 @@ return array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.attachments',
 			'config' => array(
-				'type' => 'inline',
-				'foreign_table' => 'sys_file',
-				'minitems' => 0,
-				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
-			),
+				'type' => 'select',
+				'renderType' => 'selectMultipleSideBySide',
+				'foreign_table' => 'tx_kdcalendar_domain_model_attachment',
+				'MM' => 'tx_kdcalendar_event_attachment_mm',
+				'size' => 10,
+				'autoSizeMax' => 30,
+				'maxitems' => 9999,
+				'multiple' => 0,
+				'wizards' => array(
+					'_PADDING' => 1,
+					'_VERTICAL' => 1,
+					'edit' => array(
+						'module' => array(
+							'name' => 'wizard_edit',
+						),
+						'type' => 'popup',
+						'title' => 'Edit',
+						'icon' => 'edit2.gif',
+						'popup_onlyOpenIfSelected' => 1,
+						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+						),
+					'add' => Array(
+						'module' => array(
+							'name' => 'wizard_add',
+						),
+						'type' => 'script',
+						'title' => 'Create new',
+						'icon' => 'add.gif',
+						'params' => array(
+							'table' => 'tx_kdcalendar_domain_model_attachment',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						)
+					)
+				)
+			)
 		),
 		
 		'calendar' => array(

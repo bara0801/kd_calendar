@@ -29,7 +29,7 @@ namespace KevinDitscheid\KdCalendar\Domain\Model;
 /**
  * An events attachment
  */
-class Attachment extends \TYPO3\CMS\Extbase\Domain\Model\File
+class Attachment extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**

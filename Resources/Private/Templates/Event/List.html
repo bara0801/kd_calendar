@@ -4,10 +4,22 @@
 <f:section name="main">
 	<f:for each="{events}" as="event">
 		<div class="event-item">
-			<header>{event.summary}</header>
-			<div class="date">
-				{event.start.date -> f:format.date(format:'d.m.Y')}
-			</div>
+			<header>
+				<div class="date">
+					<f:render partial="Date" arguments="{date: event.start.date}" />
+				</div>
+			</header>
+			<p class="black">{event.summary}</p>
+			<f:if condition="{event.description}">
+				<p class="black">{event.description}</p>
+			</f:if>
+			<f:if condition="{event.attachments}">
+				<p>
+				<f:for each="{event.attachments}" as="attachment">
+					<iframe src="https://drive.google.com/file/d/{attachment.fileId}/preview" width="200" height="250"></iframe>
+				</f:for>
+				</p>
+			</f:if>
 		</div>
 	</f:for>
 </f:section>

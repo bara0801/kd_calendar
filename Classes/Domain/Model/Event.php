@@ -310,9 +310,9 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\KevinDitscheid\KdCalendar\Domain\Model\Attachment>
 	 */
 	protected $attachments = null;
-	
+
 	/**
-	 *The calendar
+	 * The calendar
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Calendar
 	 */
@@ -326,8 +326,8 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Event
 	 */
-	static public function convert($eventItem, $event = NULL){
-		if($event === NULL){
+	static public function convert($eventItem, $event = NULL) {
+		if ($event === NULL) {
 			$event = new \KevinDitscheid\KdCalendar\Domain\Model\Event();
 		}
 		$event->setId($eventItem->getId());
@@ -351,82 +351,91 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$event->setRecurrence($eventItem->getRecurrence());
 		$event->setRecurringEventId($eventItem->getRecurringEventId());
 		$event->setSequence($eventItem->getSequence());
-		
+
 		$event->setAttachments(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage());
-		foreach($eventItem->getAttachments() as $attachment){
+		foreach ($eventItem->getAttachments() as $attachment) {
 			$event->addAttachment(
 				\KevinDitscheid\KdCalendar\Domain\Model\Attachment::convert($attachment)
 			);
 		}
 		
 		$event->setAttendees(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage());
-		foreach($eventItem->getAttendees() as $attendee){
+		foreach ($eventItem->getAttendees() as $attendee) {
 			$event->addAttendee(
 				\KevinDitscheid\KdCalendar\Domain\Model\Attendees::convert($attendee)
 			);
 		}
-		
-		if($eventItem->getCreator()){
+
+		if ($eventItem->getCreator()) {
 			$event->setCreator(
 				\KevinDitscheid\KdCalendar\Domain\Model\Creator::convert($eventItem->getCreator(), $event->getCreator())
 			);
-		}else{
+		} else {
 			$event->setCreator(NULL);
 		}
-		if($eventItem->getGadget()){
+		if ($eventItem->getGadget()) {
 			$event->setGadget(
 				\KevinDitscheid\KdCalendar\Domain\Model\Gadget::convert($eventItem->getGadget(), $event->getGadget())
 			);
-		}else{
+		} else {
 			$event->setCreator(NULL);
 		}
-		if($eventItem->getStart()){
+		if ($eventItem->getStart()) {
 			$event->setStart(
 				\KevinDitscheid\KdCalendar\Domain\Model\Time::convert($eventItem->getStart(), $event->getStart())
 			);
-		}else{
+		} else {
 			$event->setStart(NULL);
 		}
-		if($eventItem->getEnd()){
+		if ($eventItem->getEnd()) {
 			$event->setEnd(
 				\KevinDitscheid\KdCalendar\Domain\Model\Time::convert($eventItem->getEnd(), $event->getEnd())
 			);
-		}else{
+		} else {
 			$event->setEnd(NULL);
 		}
-		if($eventItem->getOriginalStartTime()){
+		if ($eventItem->getOriginalStartTime()) {
 			$event->setOriginalStartTime(
 				\KevinDitscheid\KdCalendar\Domain\Model\Time::convert($eventItem->getOriginalStartTime(), $event->getOriginalStartTime())
 			);
-		}else{
+		} else {
 			$event->setOriginalStartTime(NULL);
 		}
-		if($eventItem->getOrganizer()){
+		if ($eventItem->getOrganizer()) {
 			$event->setOrganizer(
 				\KevinDitscheid\KdCalendar\Domain\Model\Organizer::convert($eventItem->getOrganizer(), $event->getOrganizer())
 			);
-		}else{
+		} else {
 			$event->setOrganizer(NULL);
 		}
-		
+
 		$event->setReminders(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage());
 		$reminders = $eventItem->getReminders();
-		if($reminders){
+		if ($reminders) {
 			$event->setUseDefaultReminder($reminders->getUseDefault());
-			foreach($reminders->getOverrides() as $reminder){
+			foreach ($reminders->getOverrides() as $reminder) {
 				$event->addReminder(
 					\KevinDitscheid\KdCalendar\Domain\Model\Reminder::convert($reminder)
 				);
 			}
 		}
-		
+
 		$source = $eventItem->getSource();
 		$event->setSourceTitle($source['title']);
 		$event->setSourceUrl($source['url']);
-		
+
 		return $event;
 	}
-	
+
+	/**
+	 * Get the upload folder object
+	 *
+	 * @return TYPO3\CMS\Core\Resource\Folder
+	 */
+	public function getUploadFolder() {
+		return $this->resourceFactory->getDefaultStorage()->getDefaultFolder();
+	}
+
 	/**
 	 * __construct
 	 */
@@ -445,6 +454,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected function initStorageObjects() {
 		$this->attendees = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->attachments = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->reminders = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 

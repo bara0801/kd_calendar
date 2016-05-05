@@ -73,6 +73,15 @@ class CalendarRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 	 */
 	protected function persistCalendars(){
 		$this->persistenceManager->persistAll();
+		$this->resetExpireDate();
+	}
+	
+	/**
+	 * Reset the expire date
+	 *
+	 * @return void
+	 */
+	public function resetExpireDate(){
 		$this->registry->set('tx_kdcalendar', 'calendarexpired', time() + 24 * 60 * 60);
 	}
 	

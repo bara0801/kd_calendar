@@ -92,7 +92,7 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return boolean
 	 */
 	public function eventsLoaded(){
-		if($this->registry->get('tx_kd_calendar', 'eventsexpired_' . $this->calendar->getId())){
+		if($this->registry->get('tx_kdcalendar', 'eventsexpired_' . $this->calendar->getId())){
 			return TRUE;
 		}
 		return FALSE;
@@ -104,7 +104,7 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return boolean
 	 */
 	public function eventsExpired(){
-		if($this->registry->get('tx_kd_calendar', 'eventsexpired_' . $this->calendar->getId()) <= time()){
+		if($this->registry->get('tx_kdcalendar', 'eventsexpired_' . $this->calendar->getId()) <= time()){
 			return TRUE;
 		}
 		return FALSE;
@@ -117,6 +117,15 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 */
 	protected function persistEvents(){
 		$this->persistenceManager->persistAll();
+		$this->resetExpireDate();
+	}
+	
+	/**
+	 * Reset the expire date
+	 *
+	 * @return void
+	 */
+	public function resetExpireDate(){
 		$this->registry->set('tx_kdcalendar', 'eventsexpired_' . $this->calendar->getId(), time() + 24 * 60 * 60);
 	}
 	

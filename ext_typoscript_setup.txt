@@ -10,12 +10,6 @@ config.tx_extbase{
 					
           		}
             }
-            TYPO3\CMS\Extbase\Domain\Model\File {
-                subclasses {
-                    Tx_KdCalendar_Attachment = KevinDitscheid\KdCalendar\Domain\Model\Attachment
-					
-          		}
-            }
             KevinDitscheid\KdCalendar\Domain\Model\Creator {
                 mapping {
                     tableName = fe_users
@@ -27,13 +21,6 @@ config.tx_extbase{
                 mapping {
                     tableName = fe_users
                     recordType = Tx_KdCalendar_Organizer
-                }
-            }
-            
-            KevinDitscheid\KdCalendar\Domain\Model\Attachment {
-                mapping {
-                    tableName = sys_file
-                    recordType = Tx_KdCalendar_Attachment
                 }
             }
             
