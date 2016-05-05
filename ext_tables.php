@@ -5,12 +5,26 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'KevinDitscheid.' . $_EXTKEY, 'Events', 'Events'
+	'KevinDitscheid.' . $_EXTKEY, 
+	'Events', 
+	'Events'
 );
-
+$TCA['tt_content']['types']['kdcalendar_events'] = array(
+	'showitem' => '--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,' .
+	'--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.header;header,' .
+	'pi_flexform,' .
+	'--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,' .
+	'--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,' .
+	'--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,' .
+	'--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.visibility;visibility,' .
+	'--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,' .
+	'--div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category,' .
+	'categories'
+);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-	'kdcalendar_events', 
-	'FILE:EXT:kd_calendar/Configuration/FlexForms/Events.xml'
+	'*', 
+	'FILE:EXT:kd_calendar/Configuration/FlexForms/Events.xml',
+	'kdcalendar_events'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(

@@ -310,6 +310,13 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\KevinDitscheid\KdCalendar\Domain\Model\Attachment>
 	 */
 	protected $attachments = null;
+	
+	/**
+	 *The calendar
+	 *
+	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Calendar
+	 */
+	protected $calendar = NULL;
 
 	/**
 	 * Insert the google data into the model
@@ -1234,6 +1241,24 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function removeAttachment(\KevinDitscheid\KdCalendar\Domain\Model\Attachment $attachment) {
 		$this->attachments->detach($attachment);
+	}
+
+	/**
+	 * Get the calendar
+	 *
+	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Calendar
+	 */
+	public function getCalendar() {
+		return $this->calendar;
+	}
+
+	/**
+	 * Set the calendar
+	 *
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
+	 */
+	public function setCalendar(\KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar) {
+		$this->calendar = $calendar;
 	}
 
 }

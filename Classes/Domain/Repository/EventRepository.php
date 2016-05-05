@@ -63,16 +63,23 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	
 	/**
 	 * Initialize the event repository
+	 *
+	 * @param int $limit
+	 * @param \DateTime $date
+	 *
+	 * @return void
 	 */
-    public function loadEvents(){
-		$events = $this->googleCalendarService->fetchEvents($this->calendar->getId());
+    public function loadEvents($limit = 0, $date = NULL){
+		$events = $this->googleCalendarService->fetchEvents($this->calendar->getId(), $limit, $date);
 		foreach($events->getItems() as $eventItem){
 			$event = $this->findById($eventItem->getId())->getFirst();
 			if($event === NULL){
 				$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem);
+				$event->setCalendar($this->calendar);
 				$this->add($event);
 			}else{
 				$event = \KevinDitscheid\KdCalendar\Domain\Model\Event::convert($eventItem, $event);
+				$event->setCalendar($this->calendar);
 				$this->update($event);
 			}
 		}
@@ -133,4 +140,23 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$this->calendar = $calendar;
 	}
 
+	/**
+	 * Finds events by the calendar
+	 *
+	 * @param int $calendar
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByCalendar($calendar){
+		$query = $this->createQuery();
+		$settings = $query->getQuerySettings();
+		$settings->setRespectStoragePage(FALSE);
+		$result = $query->matching(
+			$query->logicalAnd(
+				$query->equals('calendar', $calendar),
+				$query->logicalNot($query->equals('visibility', 'private'))
+			)
+		)->execute();
+		return $result;
+	}
 }

@@ -27,9 +27,9 @@
 			</p>
 			<f:if condition="{calendars}">
 				<p>
-					Load events for:
+					Load events for:<br />
 					<f:for each="{calendars}" as="calendar">
-						<f:link.action action="loadEvents" arguments="{calendar: calendar}">{calendar.id}</f:link.action><br />
+						<f:link.action action="loadEvents" arguments="{calendar: calendar}">{calendar.id}: <strong>{calendar.summary}</strong></f:link.action><br />
 					</f:for>
 				</p>
 			</f:if>

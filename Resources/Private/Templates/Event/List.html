@@ -1,87 +1,13 @@
 
 <f:layout name="Default" />
 
-This Template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="main">
-<h1>Listing for Event</h1>
-
-<f:flashMessages />
-
-<table  class="tx_kdcalendar" >
-	<tr>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.id" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.status" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.html_link" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.summary" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.description" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.location" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.color_id" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.end_time_unspecified" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.recurrence" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.recurring_event_id" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.transparency" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.visibility" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.i_cal_u_i_d" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.sequence" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.attendees_omitted" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.extended_properties" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.hangout_link" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.anyone_can_add_self" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.guests_can_invite_others" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.guests_can_modify" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.guests_can_see_other_guests" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.private_copy" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.locked" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.use_default_reminder" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.source_url" /></th>
-		<th><f:translate key="tx_kdcalendar_domain_model_event.source_title" /></th>
-		<th> </th>
-		<th> </th>
-	</tr>
-
 	<f:for each="{events}" as="event">
-		<tr>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.id}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.status}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.htmlLink}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.summary}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.description}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.location}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.colorId}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.endTimeUnspecified}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.recurrence}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.recurringEventId}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.transparency}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.visibility}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.iCalUID}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.sequence}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.attendeesOmitted}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.extendedProperties}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.hangoutLink}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.anyoneCanAddSelf}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.guestsCanInviteOthers}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.guestsCanModify}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.guestsCanSeeOtherGuests}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.privateCopy}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.locked}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.useDefaultReminder}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.sourceUrl}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.sourceTitle}</f:link.action></td>
-			<td><f:link.action action="edit" arguments="{event : event}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{event : event}">Delete</f:link.action></td>
-		</tr>
+		<div class="event-item">
+			<header>{event.summary}</header>
+			<div class="date">
+				{event.start.date -> f:format.date(format:'d.m.Y')}
+			</div>
+		</div>
 	</f:for>
-</table>
-
-<f:link.action action="new">New Event</f:link.action>
 </f:section>

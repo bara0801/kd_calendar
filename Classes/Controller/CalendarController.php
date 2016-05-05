@@ -1,7 +1,8 @@
 <?php
+
 namespace KevinDitscheid\KdCalendar\Controller;
 
-/***************************************************************
+/* * *************************************************************
  *
  *  Copyright notice
  *
@@ -24,42 +25,39 @@ namespace KevinDitscheid\KdCalendar\Controller;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * ************************************************************* */
 
 /**
  * CalendarController
  */
-class CalendarController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
-{
+class CalendarController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
-    /**
-     * calendarRepository
-     *
-     * @var \KevinDitscheid\KdCalendar\Domain\Repository\CalendarRepository
-     * @inject
-     */
-    protected $calendarRepository = NULL;
-    
-    /**
-     * action list
-     *
-     * @return void
-     */
-    public function listAction()
-    {
-        $calendars = $this->calendarRepository->findAll();
-        $this->view->assign('calendars', $calendars);
-    }
-    
-    /**
-     * action show
-     *
-     * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
-     * @return void
-     */
-    public function showAction(\KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar)
-    {
-        $this->view->assign('calendar', $calendar);
-    }
+	/**
+	 * calendarRepository
+	 *
+	 * @var \KevinDitscheid\KdCalendar\Domain\Repository\CalendarRepository
+	 * @inject
+	 */
+	protected $calendarRepository = NULL;
+
+	/**
+	 * action list
+	 *
+	 * @return void
+	 */
+	public function listAction() {
+		$calendars = $this->calendarRepository->findAll();
+		$this->view->assign('calendars', $calendars);
+	}
+
+	/**
+	 * action show
+	 *
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
+	 * @return void
+	 */
+	public function showAction(\KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar) {
+		$this->view->assign('calendar', $calendar);
+	}
 
 }

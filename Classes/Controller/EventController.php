@@ -1,7 +1,8 @@
 <?php
+
 namespace KevinDitscheid\KdCalendar\Controller;
 
-/***************************************************************
+/* * *************************************************************
  *
  *  Copyright notice
  *
@@ -24,42 +25,51 @@ namespace KevinDitscheid\KdCalendar\Controller;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * ************************************************************* */
 
 /**
  * EventController
  */
-class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
-{
+class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
-    /**
-     * eventRepository
+	/**
+	 * eventRepository
+	 *
+	 * @var \KevinDitscheid\KdCalendar\Domain\Repository\EventRepository
+	 * @inject
+	 */
+	protected $eventRepository = NULL;
+
+	/**
+     * calendarRepository
      *
-     * @var \KevinDitscheid\KdCalendar\Domain\Repository\EventRepository
+     * @var \KevinDitscheid\KdCalendar\Domain\Repository\CalendarRepository
      * @inject
      */
-    protected $eventRepository = NULL;
-    
-    /**
-     * action list
-     *
-     * @return void
-     */
-    public function listAction()
-    {
-        $events = $this->eventRepository->findAll();
-        $this->view->assign('events', $events);
-    }
-    
-    /**
-     * action show
-     *
-     * @param \KevinDitscheid\KdCalendar\Domain\Model\Event $event
-     * @return void
-     */
-    public function showAction(\KevinDitscheid\KdCalendar\Domain\Model\Event $event)
-    {
-        $this->view->assign('event', $event);
-    }
+    protected $calendarRepository = NULL;
+	
+	/**
+	 * action list
+	 *
+	 * @return void
+	 */
+	public function listAction() {
+		$calendar = $this->calendarRepository->findByUid($this->settings['calendar']);
+		if($calendar === NULL){
+			$calendar = $this->calendarRepository->findByPrimaryCal(TRUE);
+		}
+		$events = $this->eventRepository->findByCalendar($calendar);
+		$this->view->assign('events', $events);
+	}
+
+	/**
+	 * action show
+	 *
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Event $event
+	 * @return void
+	 */
+	public function showAction(\KevinDitscheid\KdCalendar\Domain\Model\Event $event) {
+		$this->view->assign('event', $event);
+	}
 
 }
