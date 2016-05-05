@@ -9,6 +9,15 @@
 			<trans-unit id="events.settings.calendar">
 				<source>Calendar to list events from</source>
 			</trans-unit>
+			<trans-unit id="events.settings.calendarSettings.maxEvents">
+				<source>Maximum amount of events</source>
+			</trans-unit>
+			<trans-unit id="events.settings.calendarSettings.start">
+				<source>Start date for events</source>
+			</trans-unit>
+			<trans-unit id="events.settings.calendarSettings.end">
+				<source>End date for events</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

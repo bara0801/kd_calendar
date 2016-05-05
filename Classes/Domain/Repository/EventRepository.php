@@ -144,19 +144,53 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * Finds events by the calendar
 	 *
 	 * @param int $calendar
+	 * @param array $settings
 	 *
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByCalendar($calendar){
+	public function findByCalendar($calendar, $settings){
 		$query = $this->createQuery();
-		$settings = $query->getQuerySettings();
-		$settings->setRespectStoragePage(FALSE);
-		$result = $query->matching(
+		$querySettings = $query->getQuerySettings();
+		$querySettings->setRespectStoragePage(FALSE);
+		// set limit if given
+		if($settings['maxEvents']){
+			$query->setLimit((int)$settings['maxEvents']);
+		}
+		$query->setOrderings(array(
+			'start.date' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+		));
+		// set up initial conditions
+		$conditions = array(
 			$query->logicalAnd(
 				$query->equals('calendar', $calendar),
 				$query->logicalNot($query->equals('visibility', 'private'))
 			)
-		)->execute();
-		return $result;
+		);
+		
+		// add start date
+		if($settings['start']){
+			$conditions[] = $query->logicalAnd(
+				$query->logicalNot($query->equals('start',NULL)),
+				$query->greaterThan('start.date', \date_create($settings['start']))
+			);
+		}
+		// add end date
+		if($settings['end']){
+			$conditions[] = $query->logicalAnd(
+				$query->logicalNot($query->equals('end', NULL)),
+				$query->lessThan('end.date', \date_create($settings['end']))
+			);
+		}
+		if(count($conditions) > 1){
+			$result = $query->matching(
+				$query->logicalAnd($conditions)
+			);
+		}else{
+			$result = $query->matching(
+				$conditions[0]
+			);
+		}
+		
+		return $result->execute();
 	}
 }

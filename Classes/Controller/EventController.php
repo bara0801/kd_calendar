@@ -58,7 +58,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		if($calendar === NULL){
 			$calendar = $this->calendarRepository->findByPrimaryCal(TRUE);
 		}
-		$events = $this->eventRepository->findByCalendar($calendar);
+		$events = $this->eventRepository->findByCalendar($calendar, $this->settings['calendarSettings']);
 		$this->view->assign('events', $events);
 	}
 

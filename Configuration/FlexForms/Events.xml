@@ -6,13 +6,13 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:kd_kalendar/Resources/Private/Language/locallang_flexform.xlf:events.sheet.general</sheetTitle>
+					<sheetTitle>LLL:EXT:kd_calendar/Resources/Private/Language/locallang_flexform.xlf:events.sheet.general</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.calendar>
 						<TCEforms>
-							<label>LLL:EXT:kd_kalendar/Resources/Private/Language/locallang_flexform.xlf:events.settings.calendar</label>
+							<label>LLL:EXT:kd_calendar/Resources/Private/Language/locallang_flexform.xlf:events.settings.calendar</label>
 							<config>
 								<type>select</type>
 								<foreign_table>tx_kdcalendar_domain_model_calendar</foreign_table>
@@ -21,6 +21,39 @@
 							</config>
 						</TCEforms>
 					</settings.calendar>
+					<settings.calendarSettings.maxEvents>
+						<TCEforms>
+							<label>LLL:EXT:kd_calendar/Resources/Private/Language/locallang_flexform.xlf:events.settings.calendarSettings.maxEvents</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<default>5</default>
+								<eval>trim,int+</eval>
+							</config>
+						</TCEforms>
+					</settings.calendarSettings.maxEvents>
+					<settings.calendarSettings.start>
+						<TCEforms>
+							<label>LLL:EXT:kd_calendar/Resources/Private/Language/locallang_flexform.xlf:events.settings.calendarSettings.start</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<default>now</default>
+								<eval>trim</eval>
+							</config>
+						</TCEforms>
+					</settings.calendarSettings.start>
+					<settings.calendarSettings.end>
+						<TCEforms>
+							<label>LLL:EXT:kd_calendar/Resources/Private/Language/locallang_flexform.xlf:events.settings.calendarSettings.end</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<default>+1 day</default>
+								<eval>trim</eval>
+							</config>
+						</TCEforms>
+					</settings.calendarSettings.end>
 				</el>
 			</ROOT>
 		</sDEF>

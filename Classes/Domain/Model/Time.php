@@ -68,8 +68,16 @@ class Time extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 		if($time === NULL){
 			$time = new \KevinDitscheid\KdCalendar\Domain\Model\Time();
 		}
-		$time->setDate(\date_create($timeItem->getDate()));
-		$time->setDateTime(\date_create($timeItem->getDateTime()));
+		if($timeItem->getDate() && !$timeItem->getDateTime()){
+			$time->setDate(\date_create($timeItem->getDate()));
+			$time->setDateTime(\date_create($timeItem->getDate()));
+		}elseif($timeItem->getDate() && $timeItem->getDateTime()){
+			$time->setDate(\date_create($timeItem->getDate()));
+			$time->setDateTime(\date_create($timeItem->getDateTime()));
+		}elseif(!$timeItem->getDate() && $timeItem->getDateTime()){
+			$time->setDate(\date_create($timeItem->getDateTime()));
+			$time->setDateTime(\date_create($timeItem->getDateTime()));
+		}
 		$time->setTimeZone($timeItem->getTimeZone());
 		return $time;
 	}
