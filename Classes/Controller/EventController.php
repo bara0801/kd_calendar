@@ -56,7 +56,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	public function listAction() {
 		$calendar = $this->calendarRepository->findByUid($this->settings['calendar']);
 		if($calendar === NULL){
-			$calendar = $this->calendarRepository->findByPrimaryCal(TRUE);
+			$calendar = $this->calendarRepository->findByPrimaryCal(TRUE)->getFirst();
 		}
 		$this->eventRepository->setCalendar($calendar);
 		if($this->eventRepository->eventsExpired()){
