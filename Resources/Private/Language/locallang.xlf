@@ -41,6 +41,10 @@
 				<source>December</source>
 			</trans-unit>
 			
+			<trans-unit id="seeall" xml:space="preserve">
+				<source>See all</source>
+			</trans-unit>
+			
 			<trans-unit id="tx_kdcalendar_domain_model_calendar">
 				<source>Calendar</source>
 			</trans-unit>

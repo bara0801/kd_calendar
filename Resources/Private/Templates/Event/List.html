@@ -2,24 +2,34 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-	<f:for each="{events}" as="event">
-		<div class="event-item">
-			<header>
-				<div class="date">
-					<f:render partial="Date" arguments="{date: event.start.date}" />
+	<f:if condition="{events}">
+		<div class="eventlist">
+			<f:for each="{events}" as="event">
+				<div class="event-item">
+					<header>
+						<div class="date">
+							<f:render partial="Date" arguments="{date: event.start.date}" />
+						</div>
+					</header>
+					<p class="black"><strong>{event.summary}</strong></p>
+					<f:if condition="{event.description}">
+						<p class="black">{event.description}</p>
+					</f:if>
+					<f:if condition="{event.attachments}">
+						<p>
+						<f:for each="{event.attachments}" as="attachment">
+							<iframe src="https://drive.google.com/file/d/{attachment.fileId}/preview" width="200" height="250"></iframe>
+						</f:for>
+						</p>
+					</f:if>
 				</div>
-			</header>
-			<p class="black"><strong>{event.summary}</strong></p>
-			<f:if condition="{event.description}">
-				<p class="black">{event.description}</p>
-			</f:if>
-			<f:if condition="{event.attachments}">
-				<p>
-				<f:for each="{event.attachments}" as="attachment">
-					<iframe src="https://drive.google.com/file/d/{attachment.fileId}/preview" width="200" height="250"></iframe>
-				</f:for>
-				</p>
-			</f:if>
+			</f:for>
 		</div>
-	</f:for>
+
+		<f:if condition="{settings.eventDetails}">
+			<div class="detail-link">
+				<f:link.typolink class="more" parameter="{settings.eventDetails}"><f:translate key="seeall" /></f:link.typolink>
+			</div>
+		</f:if>
+	</f:if>
 </f:section>

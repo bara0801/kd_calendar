@@ -18,6 +18,9 @@
 			<trans-unit id="events.settings.calendarSettings.end">
 				<source>End date for events</source>
 			</trans-unit>
+			<trans-unit id="events.settings.eventDetails">
+				<source>"See more"-page</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

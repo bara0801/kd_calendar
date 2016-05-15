@@ -41,6 +41,10 @@
 				<target>December</target>
 			</trans-unit>
 			
+			<trans-unit id="seeall" xml:space="preserve">
+				<target>See all</target>
+			</trans-unit>
+			
 			<trans-unit id="tx_kdcalendar_domain_model_calendar">
 				<target>Calendar</target>
 			</trans-unit>
