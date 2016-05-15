@@ -152,12 +152,12 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Finds events by the calendar
 	 *
-	 * @param int $calendar
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
 	 * @param array $settings
 	 *
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByCalendar($calendar, $settings){
+	public function findByCalendar(\KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar, array $settings = array()){
 		$query = $this->createQuery();
 		$querySettings = $query->getQuerySettings();
 		$querySettings->setRespectStoragePage(FALSE);
@@ -171,10 +171,26 @@ class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		// set up initial conditions
 		$conditions = array(
 			$query->logicalAnd(
-				$query->equals('calendar', $calendar),
-				$query->logicalNot($query->equals('visibility', 'private'))
+				$query->equals('calendar', $calendar)
 			)
 		);
+		
+		if($settings['visibility']){
+			switch($settings['visibility']){
+				case 'public':
+					$conditions[] = $query->logicalNot($query->logicalOr(
+						$query->equals('visibility', 'private'),
+						$query->equals('visibility', 'confidential')
+					));
+					break;
+				case 'private':
+					$conditions[] = $query->logicalOr(
+						$query->equals('visibility', 'private'),
+						$query->equals('visibility', 'confidential')
+					);
+					break;
+			}
+		}
 		
 		// add start date
 		if($settings['start']){

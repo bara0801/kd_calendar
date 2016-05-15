@@ -62,6 +62,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		if($this->eventRepository->eventsExpired()){
 			$this->eventRepository->loadEvents(0, \date_create('now'));
 		}
+		$this->settings['calendarSettings']['visibility'] = 'public';
 		$events = $this->eventRepository->findByCalendar($calendar, $this->settings['calendarSettings']);
 		$this->view->assign('events', $events);
 	}

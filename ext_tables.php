@@ -41,7 +41,7 @@ if (TYPO3_MODE === 'BE') {
 		'calendar', // Submodule key
 		'', // Position
 		array(
-			'GoogleService' => 'authenticate,loadCalendars,loadEvents',
+			'GoogleService' => 'authenticate,loadCalendars,loadEvents,flushEvents',
 		), 
 		array(
 			'access' => 'user,group',

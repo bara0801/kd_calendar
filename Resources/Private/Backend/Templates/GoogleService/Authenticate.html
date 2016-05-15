@@ -14,12 +14,15 @@
 		</f:then>
 		<f:else>
 			<p class="success">
-				Google calendar is authenticated
+				<strong>Google calendar is authenticated</strong>
 				<f:if condition="{calendarsLoaded}">
 					<br />Calendars successfully loaded
 				</f:if>
 				<f:if condition="{eventsLoaded}">
 					<br />Events successfully loaded
+				</f:if>
+				<f:if condition="{eventsFlushed}">
+					<br />Events successfully flushed
 				</f:if>
 			</p>
 			<p>
@@ -27,9 +30,15 @@
 			</p>
 			<f:if condition="{calendars}">
 				<p>
-					Load events for:<br />
+					<strong>Load events for:</strong><br />
 					<f:for each="{calendars}" as="calendar">
 						<f:link.action action="loadEvents" arguments="{calendar: calendar}">{calendar.id}: <strong>{calendar.summary}</strong></f:link.action><br />
+					</f:for>
+				</p>
+				<p>
+					<strong>Flush events for:</strong><br />
+					<f:for each="{calendars}" as="calendar">
+						<f:link.action action="flushEvents" arguments="{calendar: calendar}">{calendar.id}: <strong>{calendar.summary}</strong></f:link.action><br />
 					</f:for>
 				</p>
 			</f:if>

@@ -50,8 +50,9 @@ class GoogleServiceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
 	 *
 	 * @param string $authCode
 	 * @param bool $eventsLoaded
+	 * @param bool $eventsFlushed
 	 */
-	public function authenticateAction($authCode = NULL, $eventsLoaded = FALSE){
+	public function authenticateAction($authCode = NULL, $eventsLoaded = FALSE, $eventsFlushed = FALSE){
 		if($authCode){
 			$this->googleService->createCredentials($authCode);
 		}
@@ -71,6 +72,7 @@ class GoogleServiceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
 			$this->view->assign('calendars', $this->calendarRepository->findAll());
 		}
 		$this->view->assign('eventsLoaded', $eventsLoaded);
+		$this->view->assign('eventsFlushed', $eventsFlushed);
 	}
 	
 	/**
@@ -90,5 +92,19 @@ class GoogleServiceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
 		$this->eventRepository->setCalendar($calendar);
 		$this->eventRepository->loadEvents();
 		$this->forward('authenticate', NULL, NULL, array('eventsLoaded' => TRUE));
+	}
+	
+	/**
+	 * Flush the events of one calendar
+	 *
+	 * @param \KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar
+	 */
+	public function flushEventsAction(\KevinDitscheid\KdCalendar\Domain\Model\Calendar $calendar){
+		$this->eventRepository->setCalendar($calendar);
+		$events = $this->eventRepository->findByCalendar($calendar);
+		foreach($events as $event){
+			$this->eventRepository->remove($event);
+		}
+		$this->forward('authenticate', NULL, NULL, array('eventsFlushed' => TRUE));
 	}
 }

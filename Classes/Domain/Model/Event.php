@@ -251,6 +251,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * The creator of the event
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Creator
+	 * @cascade remove
 	 */
 	protected $creator = null;
 
@@ -258,6 +259,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * The organizer of the event
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Organizer
+	 * @cascade remove
 	 */
 	protected $organizer = null;
 
@@ -265,6 +267,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * The start date
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Time
+	 * @cascade remove
 	 */
 	protected $start = null;
 
@@ -272,6 +275,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * The end time
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Time
+	 * @cascade remove
 	 */
 	protected $end = null;
 
@@ -279,6 +283,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * The original start time
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Time
+	 * @cascade remove
 	 */
 	protected $originalStartTime = null;
 
@@ -286,6 +291,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Attendees of this event
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\KevinDitscheid\KdCalendar\Domain\Model\Attendees>
+	 * @cascade remove
 	 */
 	protected $attendees = null;
 
@@ -293,6 +299,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * The gadget
 	 *
 	 * @var \KevinDitscheid\KdCalendar\Domain\Model\Gadget
+	 * @cascade remove
 	 */
 	protected $gadget = null;
 
@@ -308,6 +315,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * attachments
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\KevinDitscheid\KdCalendar\Domain\Model\Attachment>
+	 * @cascade remove
 	 */
 	protected $attachments = null;
 
