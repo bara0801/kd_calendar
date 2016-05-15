@@ -41,9 +41,9 @@ class Reminder extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * other account types are ignored.
      *     "popup" - Reminders are sent via a UI popup.
      *
-     * @var int
+     * @var string
      */
-    protected $method = 0;
+    protected $method = '';
     
     /**
      * Number of minutes before the start of the event when the reminder should
@@ -73,7 +73,7 @@ class Reminder extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the method
      *
-     * @return int $method
+     * @return string $method
      */
     public function getMethod()
     {
@@ -83,7 +83,7 @@ class Reminder extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the method
      *
-     * @param int $method
+     * @param string $method
      * @return void
      */
     public function setMethod($method)

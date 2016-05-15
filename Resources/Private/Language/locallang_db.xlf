@@ -219,9 +219,6 @@
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.id">
 				<source>Id</source>
 			</trans-unit>
-			<trans-unit id="tx_kdcalendar_domain_model_attendees.email">
-				<source>Email</source>
-			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.organizer">
 				<source>Organizer</source>
 			</trans-unit>
@@ -242,6 +239,33 @@
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_attendees.comment">
 				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_attendees.fe_user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_creator">
+				<source>Creator</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_creator.id">
+				<source>Id</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_creator.self">
+				<source>Self</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_creator.fe_user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_organizer">
+				<source>Organizer</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_organizer.id">
+				<source>Id</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_organizer.self">
+				<source>Self</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_organizer.fe_user">
+				<source>User</source>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_gadget">
 				<source>Gadget</source>
@@ -275,6 +299,15 @@
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_reminder.method">
 				<source>Method</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_reminder.method.email">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_reminder.method.sms">
+				<source>SMS</source>
+			</trans-unit>
+			<trans-unit id="tx_kdcalendar_domain_model_reminder.method.popup">
+				<source>Popup</source>
 			</trans-unit>
 			<trans-unit id="tx_kdcalendar_domain_model_reminder.minutes">
 				<source>Minutes</source>

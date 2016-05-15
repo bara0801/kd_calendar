@@ -1,8 +1,8 @@
 <?php
 return array(
 	'ctrl' => array(
-		'title'	=> 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_reminder',
-		'label' => 'method',
+		'title'	=> 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_creator',
+		'label' => 'id',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -10,6 +10,7 @@ return array(
 		'versioningWS' => 2,
 		'versioning_followPages' => TRUE,
 		'hideTable' => TRUE,
+		
 		'languageField' => 'sys_language_uid',
 		'transOrigPointerField' => 'l10n_parent',
 		'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -19,14 +20,14 @@ return array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'method,minutes,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('kd_calendar') . 'Resources/Public/Icons/tx_kdcalendar_domain_model_reminder.gif'
+		'searchFields' => 'id,email,organizer,self,resource,response_status,optional,additional_guests,comment,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('kd_calendar') . 'Resources/Public/Icons/tx_kdcalendar_domain_model_creator.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, method, minutes',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, id, self, fe_user',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, method, minutes, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, id, self, fe_user, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -57,8 +58,8 @@ return array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_kdcalendar_domain_model_reminder',
-				'foreign_table_where' => 'AND tx_kdcalendar_domain_model_reminder.pid=###CURRENT_PID### AND tx_kdcalendar_domain_model_reminder.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_kdcalendar_domain_model_creator',
+				'foreign_table_where' => 'AND tx_kdcalendar_domain_model_creator.pid=###CURRENT_PID### AND tx_kdcalendar_domain_model_creator.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -116,36 +117,31 @@ return array(
 			),
 		),
 
-		'method' => array(
+		'id' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_reminder.method',
-			'config' => array(
-				'type' => 'select',
-				'renderType' => 'selectSingle',
-				'items' => array(
-					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_reminder.method.email', 'email'),
-					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_reminder.method.sms', 'sms'),
-					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_reminder.method.popup', 'popup')
-				),
-				'size' => 1,
-				'maxitems' => 1,
-				'eval' => ''
-			),
-		),
-		'minutes' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_reminder.minutes',
+			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_creator.id',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'double2'
-			)
-		),
-		
-		'event' => array(
-			'config' => array(
-				'type' => 'passthrough',
+				'eval' => 'trim'
 			),
 		),
+		'self' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_creator.self',
+			'config' => array(
+				'type' => 'check',
+				'default' => 0
+			)
+		),
+		'fe_user' => array(
+			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_creator.fe_user',
+			'exclude' => 1,
+			'config' => array(
+				'type' => 'select',
+				'renderType' => 'selectSingle',
+				'foreign_table' => 'fe_users'
+			)
+		)
 	),
 );

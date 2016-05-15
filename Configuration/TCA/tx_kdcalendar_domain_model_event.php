@@ -2,7 +2,7 @@
 return array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event',
-		'label' => 'id',
+		'label' => 'summary',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -130,7 +130,7 @@ return array(
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.status',
 			'config' => array(
 				'type' => 'select',
-				'renderType' => 'singleSelect',
+				'renderType' => 'selectSingle',
 				'items' => array(
 					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.status.confirmed','confirmed'),
 					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.status.tentative','tentative'),
@@ -164,23 +164,7 @@ return array(
 				'cols' => 40,
 				'rows' => 15,
 				'eval' => 'trim',
-				'wizards' => array(
-					'RTE' => array(
-						'icon' => 'wizard_rte2.gif',
-						'notNewRecords'=> 1,
-						'RTEonly' => 1,
-						'module' => array(
-							'name' => 'wizard_rich_text_editor',
-							'urlParameters' => array(
-								'mode' => 'wizard',
-								'act' => 'wizard_rte.php'
-							)
-						),
-						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
-						'type' => 'script'
-					)
-				)
-			),
+			)
 		),
 		'location' => array(
 			'exclude' => 1,
@@ -243,7 +227,8 @@ return array(
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.visibility',
 			'config' => array(
 				'type' => 'select',
-				'renderType' => array(
+				'renderType' => 'selectSingle',
+				'items' => array(
 					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.visibility.default','default'),
 					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.visibility.public','public'),
 					array('LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.visibility.private','private'),
@@ -315,9 +300,8 @@ return array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.guests_can_modify',
 			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
+				'type' => 'check',
+				'default' => 0
 			),
 		),
 		'guests_can_see_other_guests' => array(
@@ -374,22 +358,34 @@ return array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.creator',
 			'config' => array(
-				'type' => 'select',
-				'renderType' => 'selectSingle',
-				'foreign_table' => 'fe_users',
+				'type' => 'inline',
+				'foreign_table' => 'tx_kdcalendar_domain_model_creator',
 				'minitems' => 0,
 				'maxitems' => 1,
+				'appearance' => array(
+					'collapseAll' => 0,
+					'levelLinksPosition' => 'top',
+					'showSynchronizationLink' => 1,
+					'showPossibleLocalizationRecords' => 1,
+					'showAllLocalizationLink' => 1
+				)
 			),
 		),
 		'organizer' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:kd_calendar/Resources/Private/Language/locallang_db.xlf:tx_kdcalendar_domain_model_event.organizer',
 			'config' => array(
-				'type' => 'select',
-				'renderType' => 'selectSingle',
-				'foreign_table' => 'fe_users',
+				'type' => 'inline',
+				'foreign_table' => 'tx_kdcalendar_domain_model_organizer',
 				'minitems' => 0,
 				'maxitems' => 1,
+				'appearance' => array(
+					'collapseAll' => 0,
+					'levelLinksPosition' => 'top',
+					'showSynchronizationLink' => 1,
+					'showPossibleLocalizationRecords' => 1,
+					'showAllLocalizationLink' => 1
+				)
 			),
 		),
 		'start' => array(

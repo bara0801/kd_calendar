@@ -378,7 +378,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 				\KevinDitscheid\KdCalendar\Domain\Model\Gadget::convert($eventItem->getGadget(), $event->getGadget())
 			);
 		} else {
-			$event->setCreator(NULL);
+			$event->setGadget(NULL);
 		}
 		if ($eventItem->getStart()) {
 			$event->setStart(

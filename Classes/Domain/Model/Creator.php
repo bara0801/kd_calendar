@@ -1,7 +1,8 @@
 <?php
+
 namespace KevinDitscheid\KdCalendar\Domain\Model;
 
-/***************************************************************
+/* * *************************************************************
  *
  *  Copyright notice
  *
@@ -24,43 +25,35 @@ namespace KevinDitscheid\KdCalendar\Domain\Model;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * ************************************************************* */
 
 /**
  * A creator
  */
-class Creator extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
-{
+class Creator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity{
 
-    /**
-     * The foreign id of the creator
-     *
-     * @var string
-     */
-    protected $id = '';
-    
-    /**
-     * The email address of the creator
-     *
-     * @var string
-     */
-    protected $email = '';
-    
-    /**
-     * The display name of the creator
-     *
-     * @var string
-     */
-    protected $displayName = '';
-    
-    /**
-     * Whether the creator corresponds to the calendar on which this copy of the event
-     * appears
-     *
-     * @var bool
-     */
-    protected $self = false;
-    
+	/**
+	 * The foreign id of the creator
+	 *
+	 * @var string
+	 */
+	protected $id = '';
+
+	/**
+	 * Whether the creator corresponds to the calendar on which this copy of the event
+	 * appears
+	 *
+	 * @var bool
+	 */
+	protected $self = false;
+
+	/**
+	 * The user
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+	 */
+	protected $feUser = NULL;
+
 	/**
 	 * Convert google object to model
 	 *
@@ -69,109 +62,108 @@ class Creator extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 	 *
 	 * @return \KevinDitscheid\KdCalendar\Domain\Model\Creator
 	 */
-	static public function convert($creatorItem, $creator = NULL){
-		if($creator === NULL){
+	static public function convert($creatorItem, $creator = NULL) {
+		$feUserRepository = self::getFrontendUserRepositoryInstance();
+		$feUser = $feUserRepository->findByEmail($creatorItem->getEmail())->getFirst();
+		if ($feUser === NULL) {
+			$feUser = new \TYPO3\CMS\Extbase\Domain\Model\FrontendUser();
+			$feUser->setUsername($creatorItem->getEmail());
+			$feUser->setName($creatorItem->getDisplayName());
+			$feUser->setEmail($creatorItem->getEmail());
+			$feUserRepository->add($feUser);
+			self::persist();
+		}
+		if ($creator === NULL) {
 			$creator = new \KevinDitscheid\KdCalendar\Domain\Model\Creator();
 		}
-		$creator->setDisplayName($creatorItem->getDisplayName());
-		$creator->setEmail($creatorItem->getEmail());
+		$creator->setFeUser($feUser);
 		$creator->setId($creatorItem->getId());
 		$creator->setSelf($creatorItem->getSelf());
 		return $creator;
 	}
-	
-    /**
-     * Returns the id
-     *
-     * @return string $id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-    
-    /**
-     * Sets the id
-     *
-     * @param string $id
-     * @return void
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-    
-    /**
-     * Returns the email
-     *
-     * @return string $email
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    
-    /**
-     * Sets the email
-     *
-     * @param string $email
-     * @return void
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-    
-    /**
-     * Returns the displayName
-     *
-     * @return string $displayName
-     */
-    public function getDisplayName()
-    {
-        return $this->displayName;
-    }
-    
-    /**
-     * Sets the displayName
-     *
-     * @param string $displayName
-     * @return void
-     */
-    public function setDisplayName($displayName)
-    {
-        $this->displayName = $displayName;
-    }
-    
-    /**
-     * Returns the self
-     *
-     * @return bool $self
-     */
-    public function getSelf()
-    {
-        return $this->self;
-    }
-    
-    /**
-     * Sets the self
-     *
-     * @param bool $self
-     * @return void
-     */
-    public function setSelf($self)
-    {
-        $this->self = $self;
-    }
-    
-    /**
-     * Returns the boolean state of self
-     *
-     * @return bool
-     */
-    public function isSelf()
-    {
-        return $this->self;
-    }
+
+	/**
+	 * Persist all database changes
+	 */
+	static protected function persist() {
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+		$persistanceManager = $objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class);
+		$persistanceManager->persistAll();
+	}
+
+	/**
+	 * Get the frontendUserRepository
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
+	 */
+	static protected function getFrontendUserRepositoryInstance() {
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+		return $objectManager->get(\TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository::class);
+	}
+
+	/**
+	 * Returns the id
+	 *
+	 * @return string $id
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * Sets the id
+	 *
+	 * @param string $id
+	 * @return void
+	 */
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	/**
+	 * Returns the self
+	 *
+	 * @return bool $self
+	 */
+	public function getSelf() {
+		return $this->self;
+	}
+
+	/**
+	 * Sets the self
+	 *
+	 * @param bool $self
+	 * @return void
+	 */
+	public function setSelf($self) {
+		$this->self = $self;
+	}
+
+	/**
+	 * Returns the boolean state of self
+	 *
+	 * @return bool
+	 */
+	public function isSelf() {
+		return $this->self;
+	}
+
+	/**
+	 * Get the feUser
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+	 */
+	public function getFeUser() {
+		return $this->feUser;
+	}
+
+	/**
+	 * Set the feUser
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $feUser
+	 */
+	public function setFeUser(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $feUser) {
+		$this->feUser = $feUser;
+	}
 
 }

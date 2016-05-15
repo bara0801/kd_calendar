@@ -2,28 +2,29 @@
 config.tx_extbase{
     persistence{
         classes{
-
-            TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
-                subclasses {
-                    Tx_KdCalendar_Creator = KevinDitscheid\KdCalendar\Domain\Model\Creator
-					Tx_KdCalendar_Organizer = KevinDitscheid\KdCalendar\Domain\Model\Organizer
-					
-          		}
-            }
             KevinDitscheid\KdCalendar\Domain\Model\Creator {
                 mapping {
-                    tableName = fe_users
-                    recordType = Tx_KdCalendar_Creator
+					columns{
+						is_self.mapOnProperty = self
+					}
                 }
             }
             
             KevinDitscheid\KdCalendar\Domain\Model\Organizer {
                 mapping {
-                    tableName = fe_users
-                    recordType = Tx_KdCalendar_Organizer
+                    columns{
+						is_self.mapOnProperty = self
+					}
                 }
             }
             
+			KevinDitscheid\KdCalendar\Domain\Model\Attendees {
+                mapping {
+                    columns{
+						is_self.mapOnProperty = self
+					}
+                }
+            }
     	}
     }
 }
