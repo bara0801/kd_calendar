@@ -12,8 +12,10 @@
 						</div>
 					</header>
 					<p class="black"><strong>{event.summary}</strong></p>
-					<f:if condition="{event.description}">
-						<p class="black">{event.description}</p>
+					<f:if condition="{event.location}">
+						<p class="black">
+							<f:link.external uri="https://www.google.de/maps/place/{event.location}/">{event.location}</f:link.external>
+						</p>
 					</f:if>
 					<f:if condition="{event.attachments}">
 						<p>
