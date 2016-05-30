@@ -14,7 +14,7 @@
 					<p class="black"><strong>{event.summary}</strong></p>
 					<f:if condition="{event.location}">
 						<p class="black">
-							<f:link.external target="_blank" uri="https://www.google.de/maps/place/{event.location}/">{event.location}</f:link.external>
+						<f:link.external target="_blank" uri="https://www.google.de/maps/place/{event.location -> f:format.urlencode()}/">{event.location}</f:link.external>
 						</p>
 					</f:if>
 					<f:if condition="{event.attachments}">
