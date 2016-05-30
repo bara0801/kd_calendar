@@ -10,9 +10,6 @@ return array(
 		'versioningWS' => 2,
 		'versioning_followPages' => TRUE,
 
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
 		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden',
@@ -23,49 +20,15 @@ return array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('kd_calendar') . 'Resources/Public/Icons/tx_kdcalendar_domain_model_event.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, id, status, html_link, summary, description, location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments',
+		'showRecordFieldList' => 'hidden, id, status, html_link, summary, description, location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, id, status, html_link, summary, description;;;richtext:rte_transform[mode=ts_links], location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'id, status, html_link, summary, description;;;richtext:rte_transform[mode=ts_links], location, color_id, end_time_unspecified, recurrence, recurring_event_id, transparency, visibility, i_cal_u_i_d, sequence, attendees_omitted, extended_properties, hangout_link, anyone_can_add_self, guests_can_invite_others, guests_can_modify, guests_can_see_other_guests, private_copy, locked, use_default_reminder, source_url, source_title, creator, organizer, start, end, original_start_time, attendees, gadget, reminders, attachments, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, hidden;;1, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
 	),
 	'columns' => array(
-	
-		'sys_language_uid' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
-			'config' => array(
-				'type' => 'select',
-				'renderType' => 'selectSingle',
-				'foreign_table' => 'sys_language',
-				'foreign_table_where' => 'ORDER BY sys_language.title',
-				'items' => array(
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
-				),
-			),
-		),
-		'l10n_parent' => array(
-			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
-			'config' => array(
-				'type' => 'select',
-				'renderType' => 'selectSingle',
-				'items' => array(
-					array('', 0),
-				),
-				'foreign_table' => 'tx_kdcalendar_domain_model_event',
-				'foreign_table_where' => 'AND tx_kdcalendar_domain_model_event.pid=###CURRENT_PID### AND tx_kdcalendar_domain_model_event.sys_language_uid IN (-1,0)',
-			),
-		),
-		'l10n_diffsource' => array(
-			'config' => array(
-				'type' => 'passthrough',
-			),
-		),
 
 		't3ver_label' => array(
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
